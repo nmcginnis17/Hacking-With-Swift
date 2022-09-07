@@ -1,6 +1,6 @@
 //
 //  DetailViewController.swift
-//  Storm Viewer
+//  Social Sharing
 //
 //  Created by Nicholas McGinnis on 9/3/22.
 //
@@ -34,13 +34,15 @@ class DetailViewController: UIViewController {
         navigationController?.hidesBarsOnTap = false
     }
 
+
     @objc func shareTapped() {
-        guard let image = imageView.image?.jpegData(comppressionQuality: 0.8) else {
+        guard let image = imageView.image?.jpegData(compressionQuality: 0.8) else {
             print("No image found")
             return
         }
         let vc = UIActivityViewController(activityItems: [image], applicationActivities: [])
         vc.popoverPresentationController?.barButtonItem = navigationItem.rightBarButtonItem
+        print(vc)
         present(vc, animated: true)
     }
 
