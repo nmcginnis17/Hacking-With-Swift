@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="20037" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="09d-PE-rUY">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="20037" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="g0d-QV-QRQ">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="20020"/>
@@ -53,10 +53,11 @@
             </objects>
             <point key="canvasLocation" x="1465" y="104"/>
         </scene>
-        <!--Navigation Controller-->
+        <!--Item-->
         <scene sceneID="nzJ-7v-AYb">
             <objects>
                 <navigationController storyboardIdentifier="NavController" automaticallyAdjustsScrollViewInsets="NO" useStoryboardIdentifierAsRestorationIdentifier="YES" id="09d-PE-rUY" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="Item" id="7qR-K7-cZw"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="sgd-pU-qCj">
                         <rect key="frame" x="0.0" y="44" width="414" height="44"/>
@@ -64,12 +65,12 @@
                     </navigationBar>
                     <nil name="viewControllers"/>
                     <connections>
-                        <segue destination="g0d-QV-QRQ" kind="relationship" relationship="rootViewController" id="5bm-ey-ch4"/>
+                        <segue destination="2P5-ND-ok4" kind="relationship" relationship="rootViewController" id="9TR-Qx-2gF"/>
                     </connections>
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="0L0-m3-lWU" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-72" y="104"/>
+            <point key="canvasLocation" x="661" y="104"/>
         </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="ZJ9-Xg-c67">
@@ -78,16 +79,17 @@
                     <toolbarItems/>
                     <navigationItem key="navigationItem" id="3iR-DM-yax"/>
                     <tabBar key="tabBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="2rI-NF-u93">
+                        <rect key="frame" x="0.0" y="0.0" width="1000" height="1000"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     </tabBar>
                     <connections>
-                        <segue destination="2P5-ND-ok4" kind="relationship" relationship="viewControllers" id="IQh-Wq-hCu"/>
+                        <segue destination="09d-PE-rUY" kind="relationship" relationship="viewControllers" id="idt-DR-AU1"/>
                     </connections>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="hwT-oQ-2h8" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="677" y="104"/>
+            <point key="canvasLocation" x="-136" y="104"/>
         </scene>
     </scenes>
     <resources>

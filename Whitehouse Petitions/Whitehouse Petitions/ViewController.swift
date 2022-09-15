@@ -16,7 +16,7 @@ class ViewController: UITableViewController {
         // Do any additional setup after loading the view.
 
         navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .bookmarks, target: self, action: #selector(showCredit))
-        
+//        navigationItem.leftBarButtonItem = UIBarButtonItem(barButtonSystemItem: .search, target: self, action: #selector(searchPetitions))
         
         let urlString: String
         
@@ -69,7 +69,13 @@ class ViewController: UITableViewController {
     }
     
     @objc func showCredit() {
-        
+        let ac = UIAlertController(title: "Credits", message: "This data comes from the We The People API of the Whitehouse.", preferredStyle: .alert)
+        ac.addAction(UIAlertAction(title: "OK", style: .default))
+        present(ac, animated: true)
+    }
+    
+    @objc func searchPetitions() {
+        // Filter results
     }
 
 
