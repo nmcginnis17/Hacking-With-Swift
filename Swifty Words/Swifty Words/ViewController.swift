@@ -31,6 +31,7 @@ class ViewController: UIViewController {
         cluesLabel.font = UIFont.systemFont(ofSize: 24)
         cluesLabel.text = "CLUES"
         cluesLabel.numberOfLines = 0
+        cluesLabel.setContentHuggingPriority(UILayoutPriority(1), for: .vertical)
         view.addSubview(cluesLabel)
         
         answerLabel = UILabel()
@@ -39,6 +40,7 @@ class ViewController: UIViewController {
         answerLabel.text = "ANSWERS"
         answerLabel.numberOfLines = 0
         answerLabel.textAlignment = .right
+        answerLabel.setContentHuggingPriority(UILayoutPriority(1), for: .vertical)
         view.addSubview(answerLabel)
         
         currentAnswer = UITextField()
@@ -59,6 +61,10 @@ class ViewController: UIViewController {
         clear.setTitle("CLEAR", for: .normal)
         view.addSubview(clear)
         
+        let buttonsView = UIView()
+        buttonsView.translatesAutoresizingMaskIntoConstraints = false
+        view.addSubview(buttonsView)
+        
         
         NSLayoutConstraint.activate([
             scoreLabel.topAnchor.constraint(equalTo: view.layoutMarginsGuide.topAnchor),
@@ -78,10 +84,40 @@ class ViewController: UIViewController {
             submit.heightAnchor.constraint(equalToConstant: 44),
             clear.centerXAnchor.constraint(equalTo: view.centerXAnchor, constant: 100),
             clear.centerYAnchor.constraint(equalTo: submit.centerYAnchor),
-            clear.heightAnchor.constraint(equalToConstant: 44)
+            clear.heightAnchor.constraint(equalToConstant: 44),
+            buttonsView.widthAnchor.constraint(equalToConstant: 750),
+            buttonsView.heightAnchor.constraint(equalToConstant: 320),
+            buttonsView.centerXAnchor.constraint(equalTo: view.centerXAnchor),
+            buttonsView.topAnchor.constraint(equalTo: submit.bottomAnchor, constant: 20),
+            buttonsView.bottomAnchor.constraint(equalTo: view.layoutMarginsGuide.bottomAnchor, constant: -20)
         ])
-        cluesLabel.backgroundColor = .red
-        answerLabel.backgroundColor = .blue
+        
+        // values for height & width of buttons
+        let width = 150
+        let height = 80
+        
+        // create 20 buttons as 4x5 grid
+        for row in 0..<4 {
+            for col in 0..<5 {
+                // create new button & give set font size
+                let letterButton = UIButton(type: .system)
+                letterButton.titleLabel?.font = UIFont.systemFont(ofSize: 36)
+                
+                // Give button temporary text
+                letterButton.setTitle("WWW", for: .normal)
+                
+                // calculate frame of button using column and row
+                let frame = CGRect(x: col * width, y: row * height, width: width, height: height)
+                letterButton.frame = frame
+                
+                // add buttons to view
+                buttonsView.addSubview(letterButton)
+                
+                // add buttons to letterButtons array
+                letterButtons.append(letterButton)
+            }
+        }
+        
     }
 
     override func viewDidLoad() {
