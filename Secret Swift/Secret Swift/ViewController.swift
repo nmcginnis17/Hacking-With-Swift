@@ -5,6 +5,7 @@
 //  Created by Nicholas McGinnis on 12/29/22.
 //
 
+import LocalAuthentication
 import UIKit
 
 class ViewController: UIViewController {
@@ -44,7 +45,30 @@ class ViewController: UIViewController {
     }
 
     @IBAction func authenticateTapped(_ sender: Any) {
-        unlockSecretMessage()
+        let context = LAContext()
+        var error: NSError?
+        
+        if context.canEvaluatePolicy(.deviceOwnerAuthenticationWithBiometrics, error: &error) {
+            let reason = "Identify not recognised"
+            context.evaluatePolicy(.deviceOwnerAuthenticationWithBiometrics, localizedReason: reason) { [weak self] success, authenticationError in
+                DispatchQueue.main.async { [self] in
+                    if success {
+                        self?.unlockSecretMessage()
+                        let _: () = (self?.navigationItem.leftBarButtonItem = UIBarButtonItem(barButtonSystemItem: .done, target: self, action: #selector(self?.doneBtn)))!
+                    } else {
+                        //error
+                        let ac = UIAlertController(title: "Authentication failed", message: "You could not be verified; please try again.", preferredStyle: .alert)
+                        ac.addAction(UIAlertAction(title: "OK", style: .default))
+                        self?.present(ac, animated: true)
+                    }
+                }
+            }
+        } else {
+            // no biometry
+            let ac = UIAlertController(title: "Biometry unavailable", message: "Your device is not configured for biometric authentication.", preferredStyle: .alert)
+            ac.addAction(UIAlertAction(title: "OK", style: .default))
+            self.present(ac, animated: true)
+        }
     }
     
     func unlockSecretMessage() {
@@ -52,6 +76,7 @@ class ViewController: UIViewController {
         title = "Secret stuff!"
         
         secret.text = KeychainWrapper.standard.string(forKey: "SecretMessage") ?? "Oh No!"
+        
     }
     
     @objc func saveSecretMessage() {
@@ -61,6 +86,12 @@ class ViewController: UIViewController {
         secret.resignFirstResponder()
         secret.isHidden = true
         title = "Nothing to see here."
+    }
+    
+    @objc func doneBtn() {
+        saveSecretMessage()
+        secret.isHidden = true
+        navigationItem.leftBarButtonItem = nil
     }
     
 }
