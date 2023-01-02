@@ -31,6 +31,8 @@ class SelectionViewController: UITableViewController {
 				}
 			}
 		}
+        
+        tableView.register(UITableViewCell.self, forCellReuseIdentifier: "Cell")
     }
 
 	override func viewWillAppear(_ animated: Bool) {
@@ -56,7 +58,7 @@ class SelectionViewController: UITableViewController {
 
 
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-		let cell = UITableViewCell(style: .default, reuseIdentifier: "Cell")
+        let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath)
 
 		// find the image for this cell, and load its thumbnail
 		let currentImage = items[indexPath.row % items.count]
