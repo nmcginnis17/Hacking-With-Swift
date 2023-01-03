@@ -23,6 +23,7 @@ class ViewController: UIViewController, WKNavigationDelegate, UITextFieldDelegat
         let add = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(addWebView))
         let delete = UIBarButtonItem(barButtonSystemItem: .trash, target: self, action: #selector(deleteWebView))
         navigationItem.rightBarButtonItems = [delete, add]
+        addWebView()
     }
     
     func setDefaultTitle() {
@@ -36,7 +37,7 @@ class ViewController: UIViewController, WKNavigationDelegate, UITextFieldDelegat
         
         stackView.addArrangedSubview(webView)
         
-        let url = URL(string: "https://hackingwithswift.com")!
+        let url = URL(string: "https://developer.apple.com")!
         webView.load(URLRequest(url: url))
         
         webView.layer.borderColor = UIColor.blue.cgColor
@@ -90,6 +91,7 @@ class ViewController: UIViewController, WKNavigationDelegate, UITextFieldDelegat
         
         activeWebView = webView
         webView.layer.borderWidth = 3
+        updateUI(for: webView)
     }
     
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
@@ -101,6 +103,25 @@ class ViewController: UIViewController, WKNavigationDelegate, UITextFieldDelegat
         
         textField.resignFirstResponder()
         return true
+    }
+    
+    override func traitCollectionDidChange(_ previousTraitCollection: UITraitCollection?) {
+        if traitCollection.horizontalSizeClass == .compact {
+            stackView.axis = .vertical
+        } else {
+            stackView.axis = .horizontal
+        }
+    }
+    
+    func updateUI(for webView: WKWebView) {
+        title = webView.title
+        addressBar.text = webView.url?.absoluteString ?? ""
+    }
+    
+    func webView(_ webView: WKWebView, didFinish navigation: WKNavigation!) {
+        if webView == activeWebView {
+            updateUI(for: webView)
+        }
     }
 
 }
