@@ -15,6 +15,7 @@ class RecordTuneViewController: UIViewController, AVAudioRecorderDelegate {
     var recordingSession: AVAudioSession!
     var tuneRecorder: AVAudioRecorder!
     var playButton: UIButton!
+    var tunePlayer: AVAudioPlayer!
     
     
     override func viewDidLoad() {
@@ -46,7 +47,7 @@ class RecordTuneViewController: UIViewController, AVAudioRecorderDelegate {
     func loadRecordingUI() {
         recordButton = UIButton()
         recordButton.translatesAutoresizingMaskIntoConstraints = false
-        recordButton.setTitle("Tap tp Record", for: .normal)
+        recordButton.setTitle("Tap to Record", for: .normal)
         recordButton.titleLabel?.font = UIFont.preferredFont(forTextStyle: .title1)
         recordButton.addTarget(self, action: #selector(recordTapped), for: .touchUpInside)
         stackView.addArrangedSubview(recordButton)
@@ -130,7 +131,7 @@ class RecordTuneViewController: UIViewController, AVAudioRecorderDelegate {
             recordButton.setTitle("Tap to Re-record", for: .normal)
             navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Next", style: .plain, target: self, action: #selector(nextTapped))
         } else {
-            recordButton.setTitle("Tap tp Record", for: .normal)
+            recordButton.setTitle("Tap to Record", for: .normal)
             
             let ac = UIAlertController(title: "Record failed", message: "There was a problem recording your tune. Please try again.", preferredStyle: .alert)
             ac.addAction(UIAlertAction(title: "OK", style: .default))
@@ -161,6 +162,19 @@ class RecordTuneViewController: UIViewController, AVAudioRecorderDelegate {
                 self.playButton.isHidden = true
                 self.playButton.alpha = 0
             }
+        }
+    }
+    
+    @objc func playTapped() {
+        let audioURL = RecordTuneViewController.getTuneURL()
+        
+        do {
+            tunePlayer = try AVAudioPlayer(contentsOf: audioURL)
+            tunePlayer.play()
+        } catch {
+            let ac = UIAlertController(title: "Playback failed", message: "There was a problem playing your tune. Please try re-recording.", preferredStyle: .alert)
+            ac.addAction(UIAlertAction(title: "OK", style: .default))
+            present(ac, animated: true)
         }
     }
     
