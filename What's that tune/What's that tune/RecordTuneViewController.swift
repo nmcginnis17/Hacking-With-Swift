@@ -14,6 +14,7 @@ class RecordTuneViewController: UIViewController, AVAudioRecorderDelegate {
     var recordButton: UIButton!
     var recordingSession: AVAudioSession!
     var tuneRecorder: AVAudioRecorder!
+    var playButton: UIButton!
     
     
     override func viewDidLoad() {
@@ -49,6 +50,14 @@ class RecordTuneViewController: UIViewController, AVAudioRecorderDelegate {
         recordButton.titleLabel?.font = UIFont.preferredFont(forTextStyle: .title1)
         recordButton.addTarget(self, action: #selector(recordTapped), for: .touchUpInside)
         stackView.addArrangedSubview(recordButton)
+        playButton = UIButton()
+        playButton.translatesAutoresizingMaskIntoConstraints = false
+        playButton.setTitle("Tap to Play", for: .normal)
+        playButton.isHidden = true
+        playButton.alpha = 0
+        playButton.titleLabel?.font = UIFont.preferredFont(forTextStyle: .title1)
+        playButton.addTarget(self, action: #selector(playTapped), for: .touchUpInside)
+        stackView.addArrangedSubview(playButton)
     }
     
     func loadFailUI() {
@@ -127,6 +136,13 @@ class RecordTuneViewController: UIViewController, AVAudioRecorderDelegate {
             ac.addAction(UIAlertAction(title: "OK", style: .default))
             present(ac, animated: true)
         }
+        
+        if playButton.isHidden {
+            UIView.animate(withDuration: 0.35) { [weak self] in
+                self?.playButton.isHidden = false
+                self?.playButton.alpha = 1
+            }
+        }
     }
 
     @objc func nextTapped() {
@@ -138,6 +154,13 @@ class RecordTuneViewController: UIViewController, AVAudioRecorderDelegate {
             startRecording()
         } else {
             finishRecording(success: true)
+        }
+        
+        if !playButton.isHidden {
+            UIView.animate(withDuration: 0.35) { [unowned self] in
+                self.playButton.isHidden = true
+                self.playButton.alpha = 0
+            }
         }
     }
     
