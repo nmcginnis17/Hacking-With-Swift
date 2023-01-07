@@ -14,6 +14,8 @@
 		1F99D0802967D505008818FD /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1F99D07F2967D505008818FD /* Assets.xcassets */; };
 		1F99D0832967D505008818FD /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1F99D0812967D505008818FD /* LaunchScreen.storyboard */; };
 		1F99D08B2967D6E1008818FD /* RecordTuneViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F99D08A2967D6E1008818FD /* RecordTuneViewController.swift */; };
+		1F99D0AD29693390008818FD /* SelectGenreViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F99D0AC29693390008818FD /* SelectGenreViewController.swift */; };
+		1F99D0AF29693640008818FD /* AddCommentsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F99D0AE29693640008818FD /* AddCommentsViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -26,6 +28,8 @@
 		1F99D0822967D505008818FD /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		1F99D0842967D505008818FD /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		1F99D08A2967D6E1008818FD /* RecordTuneViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecordTuneViewController.swift; sourceTree = "<group>"; };
+		1F99D0AC29693390008818FD /* SelectGenreViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectGenreViewController.swift; sourceTree = "<group>"; };
+		1F99D0AE29693640008818FD /* AddCommentsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddCommentsViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -61,7 +65,9 @@
 				1F99D0762967D504008818FD /* AppDelegate.swift */,
 				1F99D0782967D504008818FD /* SceneDelegate.swift */,
 				1F99D07A2967D504008818FD /* ViewController.swift */,
+				1F99D0AE29693640008818FD /* AddCommentsViewController.swift */,
 				1F99D08A2967D6E1008818FD /* RecordTuneViewController.swift */,
+				1F99D0AC29693390008818FD /* SelectGenreViewController.swift */,
 				1F99D07C2967D504008818FD /* Main.storyboard */,
 				1F99D07F2967D505008818FD /* Assets.xcassets */,
 				1F99D0812967D505008818FD /* LaunchScreen.storyboard */,
@@ -143,7 +149,9 @@
 			files = (
 				1F99D07B2967D504008818FD /* ViewController.swift in Sources */,
 				1F99D0772967D504008818FD /* AppDelegate.swift in Sources */,
+				1F99D0AD29693390008818FD /* SelectGenreViewController.swift in Sources */,
 				1F99D0792967D504008818FD /* SceneDelegate.swift in Sources */,
+				1F99D0AF29693640008818FD /* AddCommentsViewController.swift in Sources */,
 				1F99D08B2967D6E1008818FD /* RecordTuneViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
