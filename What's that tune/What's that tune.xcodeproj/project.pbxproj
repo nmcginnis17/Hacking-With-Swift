@@ -16,6 +16,7 @@
 		1F99D08B2967D6E1008818FD /* RecordTuneViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F99D08A2967D6E1008818FD /* RecordTuneViewController.swift */; };
 		1F99D0AD29693390008818FD /* SelectGenreViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F99D0AC29693390008818FD /* SelectGenreViewController.swift */; };
 		1F99D0AF29693640008818FD /* AddCommentsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F99D0AE29693640008818FD /* AddCommentsViewController.swift */; };
+		1F99D0B3296BB359008818FD /* SubmitViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F99D0B2296BB359008818FD /* SubmitViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -30,6 +31,7 @@
 		1F99D08A2967D6E1008818FD /* RecordTuneViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecordTuneViewController.swift; sourceTree = "<group>"; };
 		1F99D0AC29693390008818FD /* SelectGenreViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectGenreViewController.swift; sourceTree = "<group>"; };
 		1F99D0AE29693640008818FD /* AddCommentsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddCommentsViewController.swift; sourceTree = "<group>"; };
+		1F99D0B2296BB359008818FD /* SubmitViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SubmitViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -66,6 +68,7 @@
 				1F99D0782967D504008818FD /* SceneDelegate.swift */,
 				1F99D07A2967D504008818FD /* ViewController.swift */,
 				1F99D0AE29693640008818FD /* AddCommentsViewController.swift */,
+				1F99D0B2296BB359008818FD /* SubmitViewController.swift */,
 				1F99D08A2967D6E1008818FD /* RecordTuneViewController.swift */,
 				1F99D0AC29693390008818FD /* SelectGenreViewController.swift */,
 				1F99D07C2967D504008818FD /* Main.storyboard */,
@@ -147,6 +150,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1F99D0B3296BB359008818FD /* SubmitViewController.swift in Sources */,
 				1F99D07B2967D504008818FD /* ViewController.swift in Sources */,
 				1F99D0772967D504008818FD /* AppDelegate.swift in Sources */,
 				1F99D0AD29693390008818FD /* SelectGenreViewController.swift in Sources */,
