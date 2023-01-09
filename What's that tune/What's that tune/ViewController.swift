@@ -37,7 +37,40 @@ class ViewController: UITableViewController {
     }
     
     func loadTunes() {
+        let pred = NSPredicate(value: true)
+        let sort = NSSortDescriptor(key: "creationDate", ascending: false)
+        let query = CKQuery(recordType: "Tunes", predicate: pred)
+        query.sortDescriptors = [sort]
         
+        let operation = CKQueryOperation(query: query)
+        operation.desiredKeys = ["genre", "comments"]
+        operation.resultsLimit = 50
+        
+        var newTunes = [Tune]()
+        
+        operation.recordFetchedBlock = { record in
+            let tune = Tune()
+            tune.recordID = record.recordID
+            tune.genre = record["genre"]
+            tune.comments = record["comments"]
+            newTunes.append(tune)
+        }
+        
+        operation.queryCompletionBlock = { [unowned self] (cursor, error) in
+            DispatchQueue.main.async {
+                if error == nil {
+                    ViewController.isDirty = false
+                    self.tunes = newTunes
+                    self.tableView.reloadData()
+                } else {
+                    let ac = UIAlertController(title: "Fetch failed", message: "There was a problem fetching the list of tunes. Please try again: \(error!.localizedDescription)", preferredStyle: .alert)
+                    ac.addAction(UIAlertAction(title: "OK", style: .default))
+                    self.present(ac, animated: true)
+                }
+            }
+        }
+        
+        CKContainer.default().publicCloudDatabase.add(operation)
     }
     
     func makeAttributedString(title: String, subtitle: String) -> NSAttributedString {
