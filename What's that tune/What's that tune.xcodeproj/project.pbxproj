@@ -32,6 +32,7 @@
 		1F99D0AC29693390008818FD /* SelectGenreViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectGenreViewController.swift; sourceTree = "<group>"; };
 		1F99D0AE29693640008818FD /* AddCommentsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddCommentsViewController.swift; sourceTree = "<group>"; };
 		1F99D0B2296BB359008818FD /* SubmitViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SubmitViewController.swift; sourceTree = "<group>"; };
+		1F99D0B4296BB774008818FD /* What's that tune.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "What's that tune.entitlements"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -64,6 +65,7 @@
 		1F99D0752967D504008818FD /* What's that tune */ = {
 			isa = PBXGroup;
 			children = (
+				1F99D0B4296BB774008818FD /* What's that tune.entitlements */,
 				1F99D0762967D504008818FD /* AppDelegate.swift */,
 				1F99D0782967D504008818FD /* SceneDelegate.swift */,
 				1F99D07A2967D504008818FD /* ViewController.swift */,
@@ -301,6 +303,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = "What's that tune/What's that tune.entitlements";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = MVKV546557;
@@ -330,6 +333,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = "What's that tune/What's that tune.entitlements";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = MVKV546557;
