@@ -17,6 +17,7 @@
 		1F99D0AD29693390008818FD /* SelectGenreViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F99D0AC29693390008818FD /* SelectGenreViewController.swift */; };
 		1F99D0AF29693640008818FD /* AddCommentsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F99D0AE29693640008818FD /* AddCommentsViewController.swift */; };
 		1F99D0B3296BB359008818FD /* SubmitViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F99D0B2296BB359008818FD /* SubmitViewController.swift */; };
+		1F99D0B6296BC7E2008818FD /* Tune.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F99D0B5296BC7E2008818FD /* Tune.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -33,6 +34,7 @@
 		1F99D0AE29693640008818FD /* AddCommentsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddCommentsViewController.swift; sourceTree = "<group>"; };
 		1F99D0B2296BB359008818FD /* SubmitViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SubmitViewController.swift; sourceTree = "<group>"; };
 		1F99D0B4296BB774008818FD /* What's that tune.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "What's that tune.entitlements"; sourceTree = "<group>"; };
+		1F99D0B5296BC7E2008818FD /* Tune.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tune.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -69,6 +71,7 @@
 				1F99D0762967D504008818FD /* AppDelegate.swift */,
 				1F99D0782967D504008818FD /* SceneDelegate.swift */,
 				1F99D07A2967D504008818FD /* ViewController.swift */,
+				1F99D0B5296BC7E2008818FD /* Tune.swift */,
 				1F99D0AE29693640008818FD /* AddCommentsViewController.swift */,
 				1F99D0B2296BB359008818FD /* SubmitViewController.swift */,
 				1F99D08A2967D6E1008818FD /* RecordTuneViewController.swift */,
@@ -153,6 +156,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				1F99D0B3296BB359008818FD /* SubmitViewController.swift in Sources */,
+				1F99D0B6296BC7E2008818FD /* Tune.swift in Sources */,
 				1F99D07B2967D504008818FD /* ViewController.swift in Sources */,
 				1F99D0772967D504008818FD /* AppDelegate.swift in Sources */,
 				1F99D0AD29693390008818FD /* SelectGenreViewController.swift in Sources */,
