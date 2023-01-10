@@ -30,7 +30,7 @@ class ResultsViewController: UITableViewController {
         let query = CKQuery(recordType: "Suggestions", predicate: pred)
         query.sortDescriptors = [sort]
         
-        CKContainer.default().publicCloudDatabase.preform(query, inZoneWith: nil) { [unowned self] results, error in
+        CKContainer.default().publicCloudDatabase.perform(query, inZoneWith: nil) { [unowned self] results, error in
             if let error = error {
                 print(error.localizedDescription)
             } else {
@@ -139,6 +139,43 @@ class ResultsViewController: UITableViewController {
         DispatchQueue.main.async { [unowned self] in
             self.suggestions = newSuggestions
             self.tableView.reloadData()
+        }
+    }
+    
+    @objc func downloadTapped() {
+        let spinner = UIActivityIndicatorView(style: .medium)
+        spinner.tintColor = UIColor.black
+        spinner.startAnimating()
+        navigationItem.rightBarButtonItem = UIBarButtonItem(customView: spinner)
+        
+        CKContainer.default().publicCloudDatabase.fetch(withRecordID: tune.recordID) { [unowned self] record, error in
+            if let error = error {
+                DispatchQueue.main.async {
+                    print("Error: \(error.localizedDescription)")
+                    self.navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Download", style: .plain, target: self, action: #selector(self.downloadTapped))
+                }
+            } else {
+                if let record = record {
+                    if let asset = record["audio"] as? CKAsset {
+                        self.tune.audio = asset.fileURL
+                        
+                        DispatchQueue.main.async {
+                            self.navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Listen", style: .plain, target: self, action: #selector(self.listenTapped))
+                        }
+                    }
+                }
+            }
+        }
+    }
+    
+    @objc func listenTapped() {
+        do {
+            tunePlayer = try AVAudioPlayer(contentsOf: tune.audio)
+            tunePlayer.play()
+        } catch {
+            let ac = UIAlertController(title: "Playback Failed", message: "There was a problem playing your tune. Please try re-recording.", preferredStyle: .alert)
+            ac.addAction(UIAlertAction(title: "OK", style: .default))
+            present(ac, animated: true)
         }
     }
 

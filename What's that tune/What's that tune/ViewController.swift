@@ -104,6 +104,12 @@ class ViewController: UITableViewController {
         cell.textLabel?.numberOfLines = 0
         return cell
     }
+    
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let vc = ResultsViewController()
+        vc.tune = tunes[indexPath.row]
+        navigationController?.pushViewController(vc, animated: true)
+    }
 
 
 }
