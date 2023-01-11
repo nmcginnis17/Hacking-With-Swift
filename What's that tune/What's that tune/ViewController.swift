@@ -20,6 +20,7 @@ class ViewController: UITableViewController {
         title = "What's that Tune?"
         navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(addTune))
         navigationItem.backBarButtonItem = UIBarButtonItem(title: "Home", style: .plain, target: nil, action: nil)
+        navigationItem.leftBarButtonItem = UIBarButtonItem(title: "Genres", style: .plain, target: self, action: #selector(selectGenre))
         
         tableView.register(UITableViewCell.self, forCellReuseIdentifier: "Cell")
     }
@@ -108,6 +109,11 @@ class ViewController: UITableViewController {
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let vc = ResultsViewController()
         vc.tune = tunes[indexPath.row]
+        navigationController?.pushViewController(vc, animated: true)
+    }
+    
+    @objc func selectGenre() {
+        let vc = MyGenresViewController()
         navigationController?.pushViewController(vc, animated: true)
     }
 
