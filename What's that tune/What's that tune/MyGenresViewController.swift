@@ -87,7 +87,21 @@ class MyGenresViewController: UITableViewController {
                             }
                         }
                     }
-                    
+                    for genre in self.myGenres {
+                        let predicate = NSPredicate(format: "genre = %@", genre)
+                        let subscription = CKQuerySubscription(recordType: "Tunes", predicate: predicate, options: .firesOnRecordCreation)
+                        
+                        let notification = CKSubscription.NotificationInfo()
+                        notification.alertBody = "There's a new tune in the \(genre) genre."
+                        notification.soundName = "default"
+                        subscription.notificationInfo = notification
+                        
+                        database.save(subscription) { result, error in
+                            if let error = error {
+                                print(error.localizedDescription)
+                            }
+                        }
+                    }
                 }
             } else {
                 print(error!.localizedDescription)
