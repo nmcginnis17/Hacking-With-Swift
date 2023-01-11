@@ -19,7 +19,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
             if let error = error {
                 print(error.localizedDescription)
             } else {
-                application.registerForRemoteNotifications()
+                DispatchQueue.main.async {
+                    application.registerForRemoteNotifications()
+                }
             }
         }
         UNUserNotificationCenter.current().delegate = self

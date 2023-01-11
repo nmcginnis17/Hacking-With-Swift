@@ -83,7 +83,7 @@ class MyGenresViewController: UITableViewController {
                     for subscription in subscriptions {
                         database.delete(withSubscriptionID: subscription.subscriptionID) { str, error in
                             if error != nil {
-                                print(error?.localizedDescription)
+                                print(error?.localizedDescription ?? "unknown error")
                             }
                         }
                     }
