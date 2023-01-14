@@ -14,6 +14,7 @@
 		1F99D0D1296FBC71008818FD /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1F99D0D0296FBC71008818FD /* Assets.xcassets */; };
 		1F99D0D4296FBC71008818FD /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1F99D0D2296FBC71008818FD /* LaunchScreen.storyboard */; };
 		1F99D0DC29711475008818FD /* Board.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F99D0DB29711475008818FD /* Board.swift */; };
+		1F99D0DE29726B22008818FD /* Player.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F99D0DD29726B22008818FD /* Player.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -26,6 +27,7 @@
 		1F99D0D3296FBC71008818FD /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		1F99D0D5296FBC71008818FD /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		1F99D0DB29711475008818FD /* Board.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Board.swift; sourceTree = "<group>"; };
+		1F99D0DD29726B22008818FD /* Player.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Player.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -61,6 +63,7 @@
 				1F99D0C7296FBC70008818FD /* AppDelegate.swift */,
 				1F99D0C9296FBC70008818FD /* SceneDelegate.swift */,
 				1F99D0CB296FBC70008818FD /* ViewController.swift */,
+				1F99D0DD29726B22008818FD /* Player.swift */,
 				1F99D0DB29711475008818FD /* Board.swift */,
 				1F99D0CD296FBC70008818FD /* Main.storyboard */,
 				1F99D0D0296FBC71008818FD /* Assets.xcassets */,
@@ -144,6 +147,7 @@
 				1F99D0CC296FBC70008818FD /* ViewController.swift in Sources */,
 				1F99D0C8296FBC70008818FD /* AppDelegate.swift in Sources */,
 				1F99D0DC29711475008818FD /* Board.swift in Sources */,
+				1F99D0DE29726B22008818FD /* Player.swift in Sources */,
 				1F99D0CA296FBC70008818FD /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
