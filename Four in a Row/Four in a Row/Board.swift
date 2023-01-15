@@ -5,6 +5,7 @@
 //  Created by Nicholas McGinnis on 1/12/23.
 //  Model
 
+import GameplayKit
 import UIKit
 
 enum ChipColor: Int {
@@ -66,6 +67,21 @@ class Board: NSObject {
     }
     
     func isWin(for player: Player) -> Bool {
+        let chip = player.chip
+        
+        for row in 0 ..< Board.height {
+            for col in 0 ..< Board.width {
+                if squaresMatch(initialChip: chip, row: row, col: col, moveX: 1, moveY: 0) {
+                    return true
+                } else if squaresMatch(initialChip: chip, row: row, col: col, moveX: 0, moveY: 1) {
+                    return true
+                } else if squaresMatch(initialChip: chip, row: row, col: col, moveX: 1, moveY: 1) {
+                    return true
+                } else if squaresMatch(initialChip: chip, row: row, col: col, moveX: 1, moveY: -1) {
+                    return true
+                }
+            }
+        }
         return false
     }
     
