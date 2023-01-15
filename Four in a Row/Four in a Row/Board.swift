@@ -8,12 +8,6 @@
 import GameplayKit
 import UIKit
 
-enum ChipColor: Int {
-    case none = 0
-    case red
-    case black
-}
-
 class Board: NSObject, GKGameModel {
     static var width = 7
     static var height = 6
