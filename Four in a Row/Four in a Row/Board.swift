@@ -57,11 +57,32 @@ class Board: NSObject {
     }
     
     func isFull() -> Bool {
-        return false
+        for column in 0 ..< Board.width {
+            if canMove(in: column) {
+                return false
+            }
+        }
+        return true
     }
     
     func isWin(for player: Player) -> Bool {
         return false
+    }
+    
+    func squaresMatch(initialChip: ChipColor, row: Int, col: Int, moveX: Int, moveY: Int) -> Bool {
+        // break early if we can not win
+        if row + (moveY * 3) < 0 { return false }
+        if row + (moveY * 3) >= Board.height { return false }
+        if col + (moveX * 3) < 0 { return false}
+        if col + (moveX * 3) >= Board.width { return false }
+        
+        // Check every square
+        if chip(inColumn: col, row: row) != initialChip { return false }
+        if chip(inColumn: col + moveX, row: row + moveY) != initialChip { return false }
+        if chip(inColumn: col + (moveX * 2), row: row + (moveY * 2)) != initialChip { return false }
+        if chip(inColumn: col + (moveX * 3), row: row + (moveY * 3)) != initialChip { return false }
+        
+        return true
     }
     
 }
