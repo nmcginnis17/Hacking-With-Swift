@@ -58,3 +58,42 @@ crazy.nextInt()
 let crazy2 = GKRandomDistribution(forDieWithSideCount: 11539)
 crazy2.nextInt()
 
+// create a random distribution with specified algorithm
+let rand = GKMersenneTwisterRandomSource()
+let distribution = GKRandomDistribution(randomSource: rand, lowestValue: 10, highestValue: 20)
+print(distribution.nextInt())
+
+// GKShuffleDistribution is anti-clustering, will give all possible numbers before repeating
+let shuffled = GKShuffledDistribution.d6()
+print(shuffled.nextInt())
+print(shuffled.nextInt())
+print(shuffled.nextInt())
+print(shuffled.nextInt())
+print(shuffled.nextInt())
+print(shuffled.nextInt())
+
+// GKGaussianDistribution - behaves like a bell curve plot. ex. if your range is 0-20 will get more numbers around 10 and decrease likelyness as you increase or decrease numbers
+for _ in 1...10 {
+    let bellCurve = GKGaussianDistribution.d20()
+    print(bellCurve.nextInt())
+}
+
+// arrayByShufflingObjects(in:) - shuffle an array
+let lotteryBalls = [Int](1...49)
+let shuffledBalls = GKRandomSource.sharedRandom().arrayByShufflingObjects(in: lotteryBalls)
+print("Ball 1 - \(shuffledBalls[0])")
+print("Ball 2 - \(shuffledBalls[1])")
+print("Ball 3 - \(shuffledBalls[2])")
+print("Ball 4 - \(shuffledBalls[3])")
+print("Ball 5 - \(shuffledBalls[4])")
+print("Ball 6 - \(shuffledBalls[5])")
+
+let fixedLotteryBalls = [Int](1...49)
+let fixedShuffledBalls = GKMersenneTwisterRandomSource(seed: 1001).arrayByShufflingObjects(in: fixedLotteryBalls)
+print("Fixed Ball 1 - \(fixedLotteryBalls[0])")
+print("Fixed Ball 2 - \(fixedLotteryBalls[1])")
+print("Fixed Ball 3 - \(fixedLotteryBalls[2])")
+print("Fixed Ball 4 - \(fixedLotteryBalls[3])")
+print("Fixed Ball 5 - \(fixedLotteryBalls[4])") 
+print("Fixed Ball 6 - \(fixedLotteryBalls[5])")
+
