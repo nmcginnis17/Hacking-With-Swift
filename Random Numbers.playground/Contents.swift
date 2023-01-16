@@ -94,6 +94,6 @@ print("Fixed Ball 1 - \(fixedLotteryBalls[0])")
 print("Fixed Ball 2 - \(fixedLotteryBalls[1])")
 print("Fixed Ball 3 - \(fixedLotteryBalls[2])")
 print("Fixed Ball 4 - \(fixedLotteryBalls[3])")
-print("Fixed Ball 5 - \(fixedLotteryBalls[4])") 
+print("Fixed Ball 5 - \(fixedLotteryBalls[4])")
 print("Fixed Ball 6 - \(fixedLotteryBalls[5])")
 
