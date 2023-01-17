@@ -19,7 +19,7 @@
 		1F9FB87F29765AA700BBDA49 /* README.txt in Resources */ = {isa = PBXBuildFile; fileRef = 1F9FB87929765AA700BBDA49 /* README.txt */; };
 		1F9FB88029765AA700BBDA49 /* PlayerExplosion.sks in Resources */ = {isa = PBXBuildFile; fileRef = 1F9FB87A29765AA700BBDA49 /* PlayerExplosion.sks */; };
 		1F9FB88129765AA700BBDA49 /* coin.wav in Resources */ = {isa = PBXBuildFile; fileRef = 1F9FB87B29765AA700BBDA49 /* coin.wav */; };
-		1F9FB88329765AC400BBDA49 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1F9FB88229765AC400BBDA49 /* Assets.xcassets */; };
+		1F9FB88529765D2D00BBDA49 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1F9FB88429765D2D00BBDA49 /* Assets.xcassets */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -36,7 +36,7 @@
 		1F9FB87929765AA700BBDA49 /* README.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = README.txt; sourceTree = "<group>"; };
 		1F9FB87A29765AA700BBDA49 /* PlayerExplosion.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = PlayerExplosion.sks; sourceTree = "<group>"; };
 		1F9FB87B29765AA700BBDA49 /* coin.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = coin.wav; sourceTree = "<group>"; };
-		1F9FB88229765AC400BBDA49 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		1F9FB88429765D2D00BBDA49 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -69,7 +69,7 @@
 		1F9FB85D297658F800BBDA49 /* Crashy Plane */ = {
 			isa = PBXGroup;
 			children = (
-				1F9FB88229765AC400BBDA49 /* Assets.xcassets */,
+				1F9FB88429765D2D00BBDA49 /* Assets.xcassets */,
 				1F9FB87529765A4C00BBDA49 /* Content */,
 				1F9FB85E297658F800BBDA49 /* AppDelegate.swift */,
 				1F9FB860297658F800BBDA49 /* GameScene.sks */,
@@ -156,11 +156,11 @@
 				1F9FB87E29765AA700BBDA49 /* explosion.wav in Resources */,
 				1F9FB86A297658F800BBDA49 /* Main.storyboard in Resources */,
 				1F9FB87C29765AA700BBDA49 /* spark.png in Resources */,
+				1F9FB88529765D2D00BBDA49 /* Assets.xcassets in Resources */,
 				1F9FB861297658F800BBDA49 /* GameScene.sks in Resources */,
 				1F9FB87D29765AA700BBDA49 /* music.m4a in Resources */,
 				1F9FB88129765AA700BBDA49 /* coin.wav in Resources */,
 				1F9FB87F29765AA700BBDA49 /* README.txt in Resources */,
-				1F9FB88329765AC400BBDA49 /* Assets.xcassets in Resources */,
 				1F9FB86F297658F900BBDA49 /* LaunchScreen.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
