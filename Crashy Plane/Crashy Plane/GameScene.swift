@@ -11,12 +11,21 @@ import GameplayKit
 class GameScene: SKScene {
     
     var player: SKSpriteNode!
+    var scoreLabel: SKLabelNode!
+    
+    var score = 0 {
+        didSet {
+            scoreLabel.text = "Score: \(score)"
+        }
+    }
     
     override func didMove(to view: SKView) {
         createPlayer()
         createSky()
         createBackground()
         createGround()
+        startRocks()
+        createScore()
     }
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
@@ -139,6 +148,17 @@ class GameScene: SKScene {
         let repeatForever = SKAction.repeatForever(sequence)
         
         run(repeatForever)
+    }
+    
+    func createScore() {
+        scoreLabel = SKLabelNode(fontNamed: "Optima-ExtraBlack")
+        scoreLabel.fontSize = 20
+        
+        scoreLabel.position = CGPoint(x: frame.midX + 80, y: frame.maxY - 60)
+        scoreLabel.text = "SCORE: 0"
+        scoreLabel.fontColor = UIColor.black
+        
+        addChild(scoreLabel)
     }
     
 }
