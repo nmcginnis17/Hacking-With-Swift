@@ -61,7 +61,7 @@ class ViewController: UITableViewController {
         commit.url = json["html_url"].stringValue
         
         let formatter = ISO8601DateFormatter()
-        commit.date = formatter.date(from: json["commit"]["committer"]["date"].stringValue ?? Date())
+        commit.date = formatter.date(from: json["commit"]["committer"]["date"].stringValue) ?? Date()
     }
 
 
