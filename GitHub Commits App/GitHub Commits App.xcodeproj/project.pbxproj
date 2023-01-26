@@ -18,6 +18,8 @@
 		1F00013D297D9FFF00ADAB2D /* GitHub Commits App.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 1F00013B297D9FFF00ADAB2D /* GitHub Commits App.xcdatamodeld */; };
 		1F000140297E483900ADAB2D /* Commit+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F00013E297E483900ADAB2D /* Commit+CoreDataClass.swift */; };
 		1F000141297E483900ADAB2D /* Commit+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F00013F297E483900ADAB2D /* Commit+CoreDataProperties.swift */; };
+		1F00015E29823C3500ADAB2D /* Author+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F00015C29823C3500ADAB2D /* Author+CoreDataClass.swift */; };
+		1F00015F29823C3500ADAB2D /* Author+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F00015D29823C3500ADAB2D /* Author+CoreDataProperties.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -33,6 +35,8 @@
 		1F00013C297D9FFF00ADAB2D /* GitHub Commits App.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "GitHub Commits App.xcdatamodel"; sourceTree = "<group>"; };
 		1F00013E297E483900ADAB2D /* Commit+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Commit+CoreDataClass.swift"; sourceTree = SOURCE_ROOT; };
 		1F00013F297E483900ADAB2D /* Commit+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Commit+CoreDataProperties.swift"; sourceTree = SOURCE_ROOT; };
+		1F00015C29823C3500ADAB2D /* Author+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Author+CoreDataClass.swift"; sourceTree = SOURCE_ROOT; };
+		1F00015D29823C3500ADAB2D /* Author+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Author+CoreDataProperties.swift"; sourceTree = SOURCE_ROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -66,6 +70,8 @@
 		1F000121297BA80D00ADAB2D /* GitHub Commits App */ = {
 			isa = PBXGroup;
 			children = (
+				1F00015C29823C3500ADAB2D /* Author+CoreDataClass.swift */,
+				1F00015D29823C3500ADAB2D /* Author+CoreDataProperties.swift */,
 				1F00013E297E483900ADAB2D /* Commit+CoreDataClass.swift */,
 				1F00013F297E483900ADAB2D /* Commit+CoreDataProperties.swift */,
 				1F000122297BA80D00ADAB2D /* AppDelegate.swift */,
@@ -160,8 +166,10 @@
 			files = (
 				1F000140297E483900ADAB2D /* Commit+CoreDataClass.swift in Sources */,
 				1F000127297BA80D00ADAB2D /* ViewController.swift in Sources */,
+				1F00015F29823C3500ADAB2D /* Author+CoreDataProperties.swift in Sources */,
 				1F000141297E483900ADAB2D /* Commit+CoreDataProperties.swift in Sources */,
 				1F000123297BA80D00ADAB2D /* AppDelegate.swift in Sources */,
+				1F00015E29823C3500ADAB2D /* Author+CoreDataClass.swift in Sources */,
 				1F000125297BA80D00ADAB2D /* SceneDelegate.swift in Sources */,
 				1F00013A297BABB300ADAB2D /* DetailViewController.swift in Sources */,
 				1F00013D297D9FFF00ADAB2D /* GitHub Commits App.xcdatamodeld in Sources */,

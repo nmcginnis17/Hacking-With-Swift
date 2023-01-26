@@ -2,12 +2,13 @@
 //  Commit+CoreDataProperties.swift
 //  GitHub Commits App
 //
-//  Created by Nicholas McGinnis on 1/22/23.
+//  Created by Nicholas McGinnis on 1/25/23.
 //
 //
 
 import Foundation
 import CoreData
+
 
 extension Commit {
 
@@ -19,9 +20,6 @@ extension Commit {
     @NSManaged public var message: String
     @NSManaged public var sha: String
     @NSManaged public var url: String
-
-}
-
-extension Commit : Identifiable {
+    @NSManaged public var author: Author
 
 }
