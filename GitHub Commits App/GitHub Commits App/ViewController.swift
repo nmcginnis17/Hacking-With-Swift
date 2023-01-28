@@ -65,9 +65,12 @@ class ViewController: UITableViewController, NSFetchedResultsControllerDelegate 
         if editingStyle == .delete {
             let commit = fetchedResultsController.object(at: indexPath)
             container.viewContext.delete(commit)
-//            tableView.deleteRows(at: [indexPath], with: .fade)
             saveContext()
         }
+    }
+    
+    override func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+        return fetchedResultsController.sections![section].name
     }
     
     func controller(_ controller: NSFetchedResultsController<NSFetchRequestResult>, didChange anObject: Any, at indexPath: IndexPath?, for type: NSFetchedResultsChangeType, newIndexPath: IndexPath?) {
@@ -82,11 +85,11 @@ class ViewController: UITableViewController, NSFetchedResultsControllerDelegate 
     func loadSavedData() {
         if fetchedResultsController == nil {
             let request = Commit.createFetchRequest()
-            let sort = NSSortDescriptor(key: "date", ascending: false)
+            let sort = NSSortDescriptor(key: "author.name", ascending: true)
             request.sortDescriptors = [sort]
             request.fetchBatchSize = 20
             
-            fetchedResultsController = NSFetchedResultsController(fetchRequest: request, managedObjectContext: container.viewContext, sectionNameKeyPath: nil, cacheName: nil)
+            fetchedResultsController = NSFetchedResultsController(fetchRequest: request, managedObjectContext: container.viewContext, sectionNameKeyPath: "author.name", cacheName: nil)
             fetchedResultsController.delegate = self
         }
         
