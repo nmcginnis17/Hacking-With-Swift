@@ -17,6 +17,7 @@
 		1F0593C229861DDE00035C5A /* UnitTestingAppUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F0593C129861DDE00035C5A /* UnitTestingAppUITests.swift */; };
 		1F0593C429861DDE00035C5A /* UnitTestingAppUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F0593C329861DDE00035C5A /* UnitTestingAppUITestsLaunchTests.swift */; };
 		1F0593D129861E6D00035C5A /* plays.txt in Resources */ = {isa = PBXBuildFile; fileRef = 1F0593D029861E6D00035C5A /* plays.txt */; };
+		1F0593D32986246000035C5A /* PlayData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F0593D22986246000035C5A /* PlayData.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -51,6 +52,7 @@
 		1F0593C129861DDE00035C5A /* UnitTestingAppUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UnitTestingAppUITests.swift; sourceTree = "<group>"; };
 		1F0593C329861DDE00035C5A /* UnitTestingAppUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UnitTestingAppUITestsLaunchTests.swift; sourceTree = "<group>"; };
 		1F0593D029861E6D00035C5A /* plays.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = plays.txt; sourceTree = "<group>"; };
+		1F0593D22986246000035C5A /* PlayData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayData.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -105,6 +107,7 @@
 				1F0593A229861DDD00035C5A /* SceneDelegate.swift */,
 				1F0593A429861DDD00035C5A /* ViewController.swift */,
 				1F0593A629861DDD00035C5A /* Main.storyboard */,
+				1F0593D22986246000035C5A /* PlayData.swift */,
 				1F0593A929861DDD00035C5A /* Assets.xcassets */,
 				1F0593AB29861DDD00035C5A /* LaunchScreen.storyboard */,
 				1F0593AE29861DDD00035C5A /* Info.plist */,
@@ -263,6 +266,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				1F0593A529861DDD00035C5A /* ViewController.swift in Sources */,
+				1F0593D32986246000035C5A /* PlayData.swift in Sources */,
 				1F0593A129861DDD00035C5A /* AppDelegate.swift in Sources */,
 				1F0593A329861DDD00035C5A /* SceneDelegate.swift in Sources */,
 			);
@@ -449,6 +453,7 @@
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -477,6 +482,7 @@
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
