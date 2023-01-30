@@ -22,7 +22,9 @@ final class UnitTestingAppTests: XCTestCase {
     
     func testAllWordsLoaded() {
         let playData = PlayData()
-        XCTAssertEqual(playData.allWords.count, 384001, "allWords was not 384001")
+        XCTAssertEqual(playData.wordCounts["guard"], 19, "word does not appear 19 times")
+        XCTAssertEqual(playData.wordCounts["fox"], 20, "word does not appear 20 times")
+        XCTAssertEqual(playData.wordCounts["attend"], 43, "word does not appear 43 times")
     }
 
 }
