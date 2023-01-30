@@ -20,11 +20,17 @@ final class UnitTestingAppTests: XCTestCase {
         super.tearDown()
     }
     
-    func testAllWordsLoaded() {
+    func testWordCountsAreCorrect() {
         let playData = PlayData()
-        XCTAssertEqual(playData.wordCounts["guard"], 19, "word does not appear 19 times")
-        XCTAssertEqual(playData.wordCounts["fox"], 20, "word does not appear 20 times")
-        XCTAssertEqual(playData.wordCounts["attend"], 43, "word does not appear 43 times")
+        XCTAssertEqual(playData.wordCounts.count(for: "guard"), 19, "word does not appear 19 times")
+        XCTAssertEqual(playData.wordCounts.count(for: "fox"), 20, "word does not appear 20 times")
+        XCTAssertEqual(playData.wordCounts.count(for: "attend"), 43, "word does not appear 43 times")
+    }
+    
+    func testWordsLoadQuickly() {
+        measure {
+            _ = PlayData()
+        }
     }
 
 }
