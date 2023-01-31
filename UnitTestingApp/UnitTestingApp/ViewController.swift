@@ -36,8 +36,13 @@ class ViewController: UITableViewController {
         
         ac.addAction(UIAlertAction(title: "Filter", style: .default) { [unowned self] _ in
             let userInput = ac.textFields?[0].text ?? "0"
-            self.playData.applyUserFilter(userInput)
-            self.tableView.reloadData()
+            if userInput == "" {
+                self.playData = .init()
+                self.tableView.reloadData()
+            } else {
+                self.playData.applyUserFilter(userInput)
+                self.tableView.reloadData()
+            }
         })
         
         ac.addAction(UIAlertAction(title: "Cancel", style: .cancel))

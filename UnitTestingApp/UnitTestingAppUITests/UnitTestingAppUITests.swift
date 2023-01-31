@@ -21,13 +21,25 @@ final class UnitTestingAppUITests: XCTestCase {
     override func tearDownWithError() throws {
         // Put teardown code here. This method is called after the invocation of each test method in the class.
     }
-
-    func testExample() throws {
-        // UI tests must launch the application that they test.
+    
+    func testInitialStateIsCorrect() {
+        XCUIApplication().activate()
+        let table = XCUIApplication().tables
+        XCTAssertEqual(table.cells.count, 7, "There should be 7 rows initially")
+    }
+    
+    func testUserFilteringByString() {
+        XCUIApplication().launch()
         let app = XCUIApplication()
-        app.launch()
-
-        // Use XCTAssert and related functions to verify your tests produce the correct results.
+        app.buttons["Search"].tap()
+        
+        let filterAlert = app.alerts
+        let textField = filterAlert.textFields.element
+        textField.typeText("test")
+        
+        filterAlert.buttons["Filter"].tap()
+        
+        XCTAssertEqual(app.tables.cells.count, 56, "There should be 56 words matching 'test'")
     }
 
     func testLaunchPerformance() throws {
