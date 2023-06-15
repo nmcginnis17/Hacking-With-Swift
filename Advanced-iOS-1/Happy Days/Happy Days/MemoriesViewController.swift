@@ -103,11 +103,41 @@ class MemoriesViewController: UICollectionViewController, UIImagePickerControlle
                 try jpegData.write(to: imagePath, options: [.atomicWrite])
             }
             
-            // create thumbnail here
+            // create thumbnail
+            if let thumbnail = resize(image: image, to: 200) {
+                let imagePath = getDocumentsDirectory().appendingPathComponent(thumbnailName)
+                if let jpegData = thumbnail.jpegData(compressionQuality: 0.8) {
+                    try jpegData.write(to: imagePath, options: [.atomicWrite])
+                }
+            }
             
         } catch {
             print("Failed to save to disk")
         }
+    }
+    
+    func resize(image: UIImage, to width: CGFloat) -> UIImage? {
+        // calculate how much to bring the width down to match target size
+        let scale = width / image.size.width
+        
+        // bring height down by same amount to maintain aspect ratio
+        let height = image.size.height * scale
+        
+        // create new image context we can draw into
+        // change parameter 2 to true for transparent background
+        // parameter 3 is scale factor - controls retina graphics
+        UIGraphicsBeginImageContextWithOptions(CGSize(width: width, height: height), false, 0)
+        
+        // draw original image into context
+        image.draw(in: CGRect(x: 0, y: 0, width: width, height: height))
+        
+        // pull out resized version
+        let newImage = UIGraphicsGetImageFromCurrentImageContext()
+        
+        // end context so UIKit can clean up
+        UIGraphicsEndImageContext()
+        
+        return newImage
     }
 
 }
