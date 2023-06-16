@@ -47,6 +47,16 @@ class MemoriesViewController: UICollectionViewController, UIImagePickerControlle
         let image = UIImage(contentsOfFile: imageName)
         cell.imageView.image = image
         
+        if cell.gestureRecognizers == nil {
+            let recognizer = UILongPressGestureRecognizer(target: self, action: #selector(memoryLongPress))
+            recognizer.minimumPressDuration = 0.25
+            cell.addGestureRecognizer(recognizer)
+            
+            cell.layer.borderColor = UIColor.white.cgColor
+            cell.layer.borderWidth = 3
+            cell.layer.cornerRadius = 10
+        }
+        
         return cell
     }
     
@@ -115,6 +125,22 @@ class MemoriesViewController: UICollectionViewController, UIImagePickerControlle
         vc.modalPresentationStyle = .formSheet
         vc.delegate = self
         navigationController?.present(vc, animated: true)
+    }
+    
+    @objc func memoryLongPress(sender: UILongPressGestureRecognizer) {
+        
+    }
+    
+    func recordMemory() {
+        
+    }
+    
+    func finishRecording(success: Bool) {
+        
+    }
+    
+    func transcribeAudio(memory: URL) {
+        
     }
     
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
