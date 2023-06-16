@@ -17,11 +17,51 @@ class MemoriesViewController: UICollectionViewController, UIImagePickerControlle
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        checkPermissions()
         loadMemories()
-        
         navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(addTapped))
     }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        
+        checkPermissions()
+    }
+    
+    override func numberOfSections(in collectionView: UICollectionView) -> Int {
+        return 2
+    }
+    
+    override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        if section == 0 {
+            return 0
+        } else {
+            return memories.count
+        }
+    }
+    
+    override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "Memory", for: indexPath) as! MemoryCell
+        
+        let memory = memories[indexPath.row]
+        let imageName = thumnailURL(for: memory).path
+        let image = UIImage(contentsOfFile: imageName)
+        cell.imageView.image = image
+        
+        return cell
+    }
+    
+    override func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
+        return collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: "Header", for: indexPath)
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, referenceSizeForHeaderInSection section: Int) -> CGSize {
+        if section == 1 {
+            return CGSize.zero
+        } else {
+            return CGSize(width: 0, height: 50)
+        }
+    }
+
     
     func checkPermissions() {
         let photosAuthorized = PHPhotoLibrary.authorizationStatus() == .authorized
@@ -114,6 +154,22 @@ class MemoriesViewController: UICollectionViewController, UIImagePickerControlle
         } catch {
             print("Failed to save to disk")
         }
+    }
+    
+    func imageURL(for memory: URL) -> URL {
+        return memory.appendingPathExtension("jpg")
+    }
+    
+    func thumnailURL(for memory: URL) -> URL {
+        return memory.appendingPathExtension("thumb")
+    }
+    
+    func audioURL(for memory: URL) -> URL {
+        return memory.appendingPathExtension("m4a")
+    }
+    
+    func transcriptionURL(for memory: URL) -> URL {
+        return memory.appendingPathExtension("txt")
     }
     
     func resize(image: UIImage, to width: CGFloat) -> UIImage? {
