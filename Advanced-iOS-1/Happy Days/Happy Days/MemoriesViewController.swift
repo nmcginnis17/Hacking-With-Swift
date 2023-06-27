@@ -211,7 +211,41 @@ class MemoriesViewController: UICollectionViewController, UIImagePickerControlle
     }
     
     func transcribeAudio(memory: URL) {
+        // get paths to where the audio is, where the transcription should be
+        let audio = audioURL(for: memory)
+        let transcription = transcriptionURL(for: memory)
         
+        // create new recognizer and point it at our audio
+        let recognizer = SFSpeechRecognizer()
+        let request = SFSpeechURLRecognitionRequest(url: audio)
+        
+        // start recognition
+        recognizer?.recognitionTask(with: request) { [unowned self] (result, error) in
+            // abort if we didn't get any transcription back
+            guard let result = result else {
+                let ac = UIAlertController(title: "Error", message: "\(String(describing: error?.localizedDescription))", preferredStyle: .alert)
+                ac.addAction(UIAlertAction(title: "OK", style: .default))
+                present(ac, animated: true)
+                print("There was an error: \(String(describing: error))")
+                return
+            }
+            
+            // if we got final transcription back, write to disk
+            if result.isFinal {
+                // pull out best transcription
+                let text = result.bestTranscription.formattedString
+                
+                // write it to disk at the correct filename for this memory
+                do {
+                    try text.write(to: transcription, atomically: true, encoding: String.Encoding.utf8)
+                } catch {
+                    let ac = UIAlertController(title: "Error", message: "Failed to save transcription", preferredStyle: .alert)
+                    ac.addAction(UIAlertAction(title: "OK", style: .default))
+                    present(ac, animated: true)
+                    print("Failed to save transcription")
+                }
+            }
+        }
     }
     
     func audioRecorderDidFinishRecording(_ recorder: AVAudioRecorder, successfully flag: Bool) {
