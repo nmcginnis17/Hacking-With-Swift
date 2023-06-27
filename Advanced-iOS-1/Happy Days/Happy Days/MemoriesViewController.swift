@@ -10,14 +10,18 @@ import Photos
 import Speech
 import UIKit
 
-class MemoriesViewController: UICollectionViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
+class MemoriesViewController: UICollectionViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate, AVAudioRecorderDelegate {
     
     var memories = [URL]()
+    var activeMemory: URL!
+    var audioRecorder: AVAudioRecorder?
+    var recordingURL: URL!
 
     override func viewDidLoad() {
         super.viewDidLoad()
         
         loadMemories()
+        recordingURL = getDocumentsDirectory().appendingPathComponent("recording.m4a")
         navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(addTapped))
     }
     
@@ -128,19 +132,92 @@ class MemoriesViewController: UICollectionViewController, UIImagePickerControlle
     }
     
     @objc func memoryLongPress(sender: UILongPressGestureRecognizer) {
-        
+        if sender.state == .began {
+            let cell = sender.view as! MemoryCell
+            
+            if let index = collectionView?.indexPath(for: cell) {
+                activeMemory = memories[index.row]
+                recordMemory()
+            }
+        } else {
+            finishRecording(success: true)
+        }
     }
     
     func recordMemory() {
+        // set background color to red so user knows their microphone is recording
+        collectionView?.backgroundColor = UIColor(red: 0.5, green: 0, blue: 0, alpha: 1)
         
+        let recordingSession = AVAudioSession.sharedInstance()
+
+        do {
+            // configure session for recording and playback through speaker
+            try recordingSession.setCategory(.playAndRecord, mode: .default, options: .defaultToSpeaker)
+            try recordingSession.setActive(true)
+            
+            // set up recording session using high-quality AAC recording
+            let settings = [
+                AVFormatIDKey: Int(kAudioFormatMPEG4AAC),
+                AVSampleRateKey: 44100,
+                AVNumberOfChannelsKey: 2,
+                AVEncoderAudioQualityKey: AVAudioQuality.high.rawValue
+            ]
+            
+            // create AVAudioRecorded instance pointing at recordingURL
+            audioRecorder = try AVAudioRecorder(url: recordingURL, settings: settings)
+            audioRecorder?.delegate = self
+            audioRecorder?.record()
+        } catch {
+            let ac = UIAlertController(title: "Error", message: "\(error.localizedDescription)", preferredStyle: .alert)
+            ac.addAction(UIAlertAction(title: "OK", style: .default))
+            present(ac, animated: true)
+            print("Failed to record: \(error.localizedDescription)")
+            finishRecording(success: false)
+        }
+        
+        // set MemoriesViewController as recording delegate, so we know when its stopped
     }
     
     func finishRecording(success: Bool) {
+        // set background color back to normal
+        collectionView?.backgroundColor = UIColor.darkGray
         
+        // stop recording if not already stopped
+        audioRecorder?.stop()
+        
+        if success {
+            do {
+                // if successful, create file URL out of active memory URL plus "m4a"
+                let memoryAudioURL = activeMemory.appendingPathExtension("m4a")
+                let fm = FileManager.default
+                
+                // if recording already exists, need to delete because can't move file over one that already exists
+                if fm.fileExists(atPath: memoryAudioURL.path) {
+                    try fm.removeItem(at: memoryAudioURL)
+                }
+                
+                // Move our recorded file(stored at the URL put in recordingURL) into memory's audio URL
+                try fm.moveItem(at: recordingURL, to: memoryAudioURL)
+                
+                // Start transcription
+                transcribeAudio(memory: activeMemory)
+            } catch let error {
+                let ac = UIAlertController(title: "Error", message: "\(error.localizedDescription)", preferredStyle: .alert)
+                ac.addAction(UIAlertAction(title: "OK", style: .default))
+                present(ac, animated: true)
+                print("Failure finishing recording: \(error)")
+            }
+        }
     }
     
     func transcribeAudio(memory: URL) {
         
+    }
+    
+    func audioRecorderDidFinishRecording(_ recorder: AVAudioRecorder, successfully flag: Bool) {
+        if !flag {
+            finishRecording(success: false)
+        }
     }
     
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
