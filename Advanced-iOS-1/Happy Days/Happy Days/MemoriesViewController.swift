@@ -6,17 +6,21 @@
 //
 
 import AVFoundation
+import CoreSpotlight
+import MobileCoreServices
 import Photos
 import Speech
 import UIKit
 
-class MemoriesViewController: UICollectionViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate, AVAudioRecorderDelegate {
+class MemoriesViewController: UICollectionViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate, UICollectionViewDelegateFlowLayout, AVAudioRecorderDelegate {
     
     var memories = [URL]()
     var activeMemory: URL!
     var audioRecorder: AVAudioRecorder?
     var recordingURL: URL!
     var audioPlayer: AVAudioPlayer?
+    var filteredMemories = [URL]()
+    var searchQuery: CSSearchQuery?
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -40,15 +44,15 @@ class MemoriesViewController: UICollectionViewController, UIImagePickerControlle
         if section == 0 {
             return 0
         } else {
-            return memories.count
+            return filteredMemories.count
         }
     }
     
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "Memory", for: indexPath) as! MemoryCell
         
-        let memory = memories[indexPath.row]
-        let imageName = thumnailURL(for: memory).path
+        let memory = filteredMemories[indexPath.row]
+        let imageName = thumbnailURL(for: memory).path
         let image = UIImage(contentsOfFile: imageName)
         cell.imageView.image = image
         
@@ -66,7 +70,7 @@ class MemoriesViewController: UICollectionViewController, UIImagePickerControlle
     }
     
     override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        let memory = memories[indexPath.row]
+        let memory = filteredMemories[indexPath.row]
         let fm = FileManager.default
         
         do {
@@ -146,6 +150,7 @@ class MemoriesViewController: UICollectionViewController, UIImagePickerControlle
                 memories.append(memoryPath)
             }
         }
+        filteredMemories = memories
         // reload our memories list
         collectionView?.reloadSections(IndexSet(integer: 1))
     }
@@ -162,7 +167,7 @@ class MemoriesViewController: UICollectionViewController, UIImagePickerControlle
             let cell = sender.view as! MemoryCell
             
             if let index = collectionView?.indexPath(for: cell) {
-                activeMemory = memories[index.row]
+                activeMemory = filteredMemories[index.row]
                 recordMemory()
             }
         } else {
@@ -265,6 +270,7 @@ class MemoriesViewController: UICollectionViewController, UIImagePickerControlle
                 // write it to disk at the correct filename for this memory
                 do {
                     try text.write(to: transcription, atomically: true, encoding: String.Encoding.utf8)
+                    self.indexMemory(memory: memory, text: text)
                 } catch {
                     let ac = UIAlertController(title: "Error", message: "Failed to save transcription", preferredStyle: .alert)
                     ac.addAction(UIAlertAction(title: "OK", style: .default))
@@ -275,9 +281,80 @@ class MemoriesViewController: UICollectionViewController, UIImagePickerControlle
         }
     }
     
+    func indexMemory(memory: URL, text: String) {
+        // create basic attribute set
+        let attributeSet = CSSearchableItemAttributeSet(itemContentType: kUTTypeText as String)
+        attributeSet.title = "Happy Days Memory"
+        attributeSet.contentDescription = text
+        attributeSet.thumbnailURL = thumbnailURL(for: memory)
+        
+        // wrap it in a searchable item, using memory's full path as its unique identifier
+        let item = CSSearchableItem(uniqueIdentifier: memory.path, domainIdentifier: "com.sinnigmedia", attributeSet: attributeSet)
+        
+        // make it never expire
+        item.expirationDate = Date.distantFuture
+        
+        // ask spotlight to index the item
+        CSSearchableIndex.default().indexSearchableItems([item]) { error in
+            if let error = error {
+                print("indexing error: \(error.localizedDescription)")
+            } else {
+                print("Search item successfully indexed: \(text)")
+            }
+        }
+    }
+    
     func audioRecorderDidFinishRecording(_ recorder: AVAudioRecorder, successfully flag: Bool) {
         if !flag {
             finishRecording(success: false)
+        }
+    }
+    
+    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
+        filteredMemories(text: searchText)
+    }
+    
+    func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
+        searchBar.resignFirstResponder()
+    }
+    
+    func filteredMemories(text: String) {
+        guard text.count > 0 else {
+            filteredMemories = memories
+            
+            UIView.performWithoutAnimation {
+                collectionView?.reloadSections(IndexSet(integer: 1))
+            }
+            
+            return
+        }
+        
+        var allItems = [CSSearchableItem]()
+        searchQuery?.cancel()
+        
+        let queryString = "contentDescription == \"*\(text)*\"c"
+        searchQuery = CSSearchQuery(queryString: queryString, attributes: nil)
+        
+        searchQuery?.foundItemsHandler = { items in
+            allItems.append(contentsOf: items)
+        }
+        
+        searchQuery?.completionHandler = { error in
+            DispatchQueue.main.async { [unowned self] in
+                self.activateFilter(matches: allItems)
+            }
+        }
+        
+        searchQuery?.start()
+    }
+    
+    func activateFilter(matches: [CSSearchableItem]) {
+        filteredMemories = matches.map { item in
+            return URL(fileURLWithPath: item.uniqueIdentifier)
+        }
+        
+        UIView.performWithoutAnimation {
+            collectionView?.reloadSections(IndexSet(integer: 1))
         }
     }
     
@@ -324,7 +401,7 @@ class MemoriesViewController: UICollectionViewController, UIImagePickerControlle
         return memory.appendingPathExtension("jpg")
     }
     
-    func thumnailURL(for memory: URL) -> URL {
+    func thumbnailURL(for memory: URL) -> URL {
         return memory.appendingPathExtension("thumb")
     }
     
