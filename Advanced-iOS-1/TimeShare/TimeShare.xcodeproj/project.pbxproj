@@ -13,6 +13,7 @@
 		1FABFB2C2A4CAC23008E344F /* MessagesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FABFB2B2A4CAC23008E344F /* MessagesViewController.swift */; };
 		1FABFB2F2A4CAC23008E344F /* MainInterface.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1FABFB2D2A4CAC23008E344F /* MainInterface.storyboard */; };
 		1FABFB312A4CAC23008E344F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1FABFB302A4CAC23008E344F /* Assets.xcassets */; };
+		1FABFB3F2A4CB885008E344F /* EventViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FABFB3E2A4CB885008E344F /* EventViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -48,6 +49,7 @@
 		1FABFB2E2A4CAC23008E344F /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/MainInterface.storyboard; sourceTree = "<group>"; };
 		1FABFB302A4CAC23008E344F /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		1FABFB322A4CAC23008E344F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		1FABFB3E2A4CB885008E344F /* EventViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -102,6 +104,7 @@
 			children = (
 				1FABFB2B2A4CAC23008E344F /* MessagesViewController.swift */,
 				1FABFB2D2A4CAC23008E344F /* MainInterface.storyboard */,
+				1FABFB3E2A4CB885008E344F /* EventViewController.swift */,
 				1FABFB302A4CAC23008E344F /* Assets.xcassets */,
 				1FABFB322A4CAC23008E344F /* Info.plist */,
 			);
@@ -208,6 +211,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				1FABFB2C2A4CAC23008E344F /* MessagesViewController.swift in Sources */,
+				1FABFB3F2A4CB885008E344F /* EventViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -411,6 +415,7 @@
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.SinnigMedia.TimeShare;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -432,6 +437,7 @@
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.SinnigMedia.TimeShare;
 				PRODUCT_NAME = "$(TARGET_NAME)";

@@ -52,9 +52,15 @@ class MessagesViewController: MSMessagesAppViewController {
     }
     
     override func willTransition(to presentationStyle: MSMessagesAppPresentationStyle) {
-        // Called before the extension transitions to a new presentation style.
-    
-        // Use this method to prepare for the change in presentation style.
+        for child in children {
+            child.willMove(toParent: nil)
+            child.view.removeFromSuperview()
+            child.removeFromParent()
+        }
+        
+        if presentationStyle == .expanded {
+            displayEventViewController(conversation: activeConversation, identifier: "CreateEvent")
+        }
     }
     
     override func didTransition(to presentationStyle: MSMessagesAppPresentationStyle) {
@@ -62,5 +68,34 @@ class MessagesViewController: MSMessagesAppViewController {
     
         // Use this method to finalize any behaviors associated with the change in presentation style.
     }
+    
+    @IBAction func createNewEvent(_ sender: AnyObject) {
+        requestPresentationStyle(.expanded)
+    }
+    
+    func displayEventViewController(conversation: MSConversation?, identifier: String) {
+        // check for a conversation
+        guard let conversation = conversation else { return }
+        
+        // create child vc
+        guard let vc = storyboard?.instantiateViewController(withIdentifier: identifier) as? EventViewController else { return }
+        
+        // add child to parent so that events are forwarded
+        addChild(vc)
+        
+        // give child a meaningful frame: make it fill our view
+        vc.view.frame = view.bounds
+        vc.view.translatesAutoresizingMaskIntoConstraints = false
+        view.addSubview(vc.view)
+        
+        // add auto layout constraints so child view continues to fill the full view
+        vc.view.leftAnchor.constraint(equalTo: view.leftAnchor).isActive = true
+        vc.view.rightAnchor.constraint(equalTo: view.rightAnchor).isActive = true
+        vc.view.topAnchor.constraint(equalTo: view.topAnchor).isActive = true
+        vc.view.bottomAnchor.constraint(equalTo: view.bottomAnchor).isActive = true
+        
+        // tell child it is now moved to a new parent view controller
+        vc.didMove(toParent: self)
+      }
 
 }
