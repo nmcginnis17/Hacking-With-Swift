@@ -31,9 +31,43 @@ class EventViewController: UIViewController, UITableViewDelegate, UITableViewDat
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        // Dequeue a cell
         let cell = tableView.dequeueReusableCell(withIdentifier: "Date", for: indexPath)
-        cell.textLabel?.text = "Date goes here"
+        
+        // pull out crresponding date and format it neatly
+        let date = dates[indexPath.row]
+        cell.textLabel?.text = DateFormatter.localizedString(from: date, dateStyle: .long, timeStyle: .short)
+        
+        // add checkmark if we voted for this date
+        if ourVotes[indexPath.row] == 1 {
+            cell.accessoryType = .checkmark
+        } else {
+            cell.accessoryType = .none
+        }
+        
+        // add vote countif other people voted for this date
+        if allVotes[indexPath.row] > 0 {
+            cell.detailTextLabel?.text = "Votes: \(allVotes[indexPath.row])"
+        } else {
+            cell.detailTextLabel?.text = ""
+        }
+        
         return cell
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        // deselect row so it doesn't stay selected
+        tableView.deselectRow(at: indexPath, animated: true)
+        
+        if let cell = tableView.cellForRow(at: indexPath) {
+            if cell.accessoryType == .checkmark {
+                cell.accessoryType = .none
+                ourVotes[indexPath.row] = 0
+            } else {
+                cell.accessoryType = .checkmark
+                ourVotes[indexPath.row] = 1
+            }
+        }
     }
     
     @IBAction func addDate(_ sender: AnyObject) {
