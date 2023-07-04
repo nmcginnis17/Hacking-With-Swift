@@ -9,6 +9,8 @@ import UIKit
 
 class ViewController: UITableViewController {
     
+    let defaults = UserDefaults.standard
+    
     var words = [String]()
 
     override func viewDidLoad() {
@@ -18,7 +20,7 @@ class ViewController: UITableViewController {
         navigationController?.navigationBar.titleTextAttributes = titleAttributes
         title = "POLYGLOT"
         
-        let defaults = UserDefaults.standard
+        navigationItem.leftBarButtonItem = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(addNewWord))
         
         if let savedWords = defaults.object(forKey: "Words") as? [String] {
             words = savedWords
@@ -75,7 +77,56 @@ class ViewController: UITableViewController {
             }
         }
     }
+    
+    override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
+        words.remove(at: indexPath.row)
+        tableView.deleteRows(at: [indexPath], with: .automatic)
+        saveWords()
+    }
+    
+    func saveWords() {
+        defaults.set(words, forKey: "Words")
+    }
 
-
+    @objc func addNewWord() {
+        // create alert controller
+        let ac = UIAlertController(title: "Add new word", message: nil, preferredStyle: .alert)
+        
+        // add 2 text fields, 1 english :: 1 french
+        ac.addTextField { textField in
+            textField.placeholder = "English"
+        }
+        
+        ac.addTextField { textField in
+            textField.placeholder = "French"
+        }
+        
+        // create "Add Word" button to submit users input
+        let submitAction = UIAlertAction(title: "Add Words", style: .default) { [unowned self, ac] (action: UIAlertAction!) in
+            // pull English and French words, or empty string if there is a problem
+            let firstWord = ac.textFields?[0].text ?? ""
+            let secondWord = ac.textFields?[1].text ?? ""
+            
+            // submit English and French word to insertFlashcard() method
+            self.insertFlashcard(first: firstWord, second: secondWord)
+        }
+        
+        ac.addAction(submitAction)
+        ac.addAction(UIAlertAction(title: "Cancel", style: .cancel))
+        
+        present(ac, animated: true)
+    }
+    
+    func insertFlashcard(first: String, second: String) {
+        guard first.count > 0 && second.count > 0 else { return }
+        
+        let newIndexPath = IndexPath(row: words.count, section: 0)
+        
+        words.append("\(first)::\(second)")
+        tableView.insertRows(at: [newIndexPath], with: .automatic)
+        
+        saveWords()
+    }
+    
 }
 
