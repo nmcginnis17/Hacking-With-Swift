@@ -1,0 +1,6 @@
+version: "Apple Swift version 5.8 (swiftlang-5.8.0.124.2 clang-1403.0.22.11.100)"
+options: "bc44187953d9861abe17dfedae4670d8cfe43ce3084f86cd6a8478f0d26dc83c"
+build_start_time: [1688436712, 82589000]
+build_end_time: [1688436712, 189294000]
+inputs:
+  "/Users/nmcginnis17/Desktop/appDev/Hacking With iOS/Advanced-iOS-1/ChooseCruise/Extension/IntentHandler.swift": [1688436308, 3504221]

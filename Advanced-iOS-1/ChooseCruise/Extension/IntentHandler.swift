@@ -8,7 +8,7 @@
 import Intents
 import UIKit
 
-class IntentHandler: INExtension, INRidesharingDomainHandling {
+class IntentHandler: INExtension, INListRideOptionsIntentHandling, INRequestRideIntentHandling, INGetRideStatusIntentHandling, INCancelRideIntentHandling, INSendRideFeedbackIntentHandling {
     func handle(intent: INListRideOptionsIntent, completion: @escaping (INListRideOptionsIntentResponse) -> Void) {
         // list of rides available
         let result = INListRideOptionsIntentResponse(code: .success, userActivity: nil)
@@ -26,6 +26,42 @@ class IntentHandler: INExtension, INRidesharingDomainHandling {
     
     func handle(intent: INRequestRideIntent, completion: @escaping (INRequestRideIntentResponse) -> Void) {
         // ride has been requested using Maps or Siri
+        let result = INRequestRideIntentResponse(code: .success, userActivity: nil)
+        
+        let status = INRideStatus()
+        
+        //internal value to identify ride uniquely in backend system
+        status.rideIdentifier = "abc123"
+        
+        // assign pickup and dropoff locations we agreed upon
+        status.pickupLocation = intent.pickupLocation
+        status.dropOffLocation = intent.dropOffLocation
+        
+        // mark as confirmed by rider
+        status.phase = INRidePhase.confirmed
+        
+        // time till ride arrives
+        status.estimatedPickupDate = Date(timeIntervalSinceNow: 900)
+        
+        // create new vehicle and configure fully
+        let vehicle = INRideVehicle()
+        
+        // workaround: load car image into UIImage, convert into PNG data, then create the INImage
+        let image = UIImage(named: "car")!
+        let data = image.pngData()!
+        vehicle.mapAnnotationImage = INImage(imageData: data)
+        
+        // set vehicle's current location to wherever user wants to go - this should place it a little way away for testing
+        vehicle.location = intent.dropOffLocation?.location
+        
+        // once vehicle is fully configured, assign it all at once to status.vehicle
+        status.vehicle = vehicle
+        
+        // attach finished INRideStatus object to result
+        result.rideStatus = status
+        
+        // send back
+        completion(result)
     }
     
     func handle(intent: INGetRideStatusIntent, completion: @escaping (INGetRideStatusIntentResponse) -> Void) {
@@ -58,11 +94,33 @@ class IntentHandler: INExtension, INRidesharingDomainHandling {
     }
     
     func resolvePickupLocation(for intent: INRequestRideIntent, with completion: @escaping (INPlacemarkResolutionResult) -> Void) {
-        //
+        // return success if valid pickup location or request a valid one
+        let result: INPlacemarkResolutionResult
+        
+        if let requestedLocation = intent.pickupLocation {
+            // we have a valid pickup location
+            result = INPlacemarkResolutionResult.success(with: requestedLocation)
+        } else {
+            // no pickup location
+            result = INPlacemarkResolutionResult.needsValue()
+        }
+        
+        completion(result)
     }
     
     func resolveDropOffLocation(for intent: INRequestRideIntent, with completion: @escaping (INPlacemarkResolutionResult) -> Void) {
-        //
+        // return success if valid dropoff location or request a valid one
+        let result: INPlacemarkResolutionResult
+        
+        if let requestedLocation = intent.dropOffLocation {
+            // valid dropoff location
+            result = INPlacemarkResolutionResult.success(with: requestedLocation)
+        } else {
+            // no dropoff location
+            result = INPlacemarkResolutionResult.needsValue()
+        }
+        
+        completion(result)
     }
     
     

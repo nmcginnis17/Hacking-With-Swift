@@ -1,0 +1,67 @@
+{
+  "buildCommand" : {
+    "command" : "build",
+    "skipDependencies" : false,
+    "style" : "buildAndRun"
+  },
+  "configuredTargets" : [
+    {
+      "guid" : "4bb2a395e6b1b8a38335567c342ddc691bb1fc0d8580cbf06dce94782a143799"
+    },
+    {
+      "guid" : "4bb2a395e6b1b8a38335567c342ddc69a7336b6e23a7d38f2aa3a296aa1e3d88"
+    }
+  ],
+  "containerPath" : "/Users/nmcginnis17/Desktop/appDev/Hacking With iOS/Advanced-iOS-1/ChooseCruise/ChooseCruise.xcodeproj",
+  "continueBuildingAfterErrors" : false,
+  "enableIndexBuildArena" : false,
+  "hideShellScriptEnvironment" : false,
+  "parameters" : {
+    "action" : "build",
+    "activeArchitecture" : "arm64",
+    "activeRunDestination" : {
+      "disableOnlyActiveArch" : false,
+      "platform" : "iphoneos",
+      "sdk" : "iphoneos16.4",
+      "sdkVariant" : "iphoneos",
+      "supportedArchitectures" : [
+        "arm64e",
+        "arm64v8",
+        "arm64",
+        "armv8"
+      ],
+      "targetArchitecture" : "arm64"
+    },
+    "arenaInfo" : {
+      "buildIntermediatesPath" : "/Users/nmcginnis17/Desktop/appDev/Hacking With iOS/Advanced-iOS-1/ChooseCruise/DerivedData/ChooseCruise/Build/Intermediates.noindex",
+      "buildProductsPath" : "/Users/nmcginnis17/Desktop/appDev/Hacking With iOS/Advanced-iOS-1/ChooseCruise/DerivedData/ChooseCruise/Build/Products",
+      "derivedDataPath" : "/Users/nmcginnis17/Desktop/appDev/Hacking With iOS/Advanced-iOS-1/ChooseCruise/DerivedData",
+      "indexDataStoreFolderPath" : "/Users/nmcginnis17/Desktop/appDev/Hacking With iOS/Advanced-iOS-1/ChooseCruise/DerivedData/ChooseCruise/Index.noindex/DataStore",
+      "indexEnableDataStore" : true,
+      "indexPCHPath" : "/Users/nmcginnis17/Desktop/appDev/Hacking With iOS/Advanced-iOS-1/ChooseCruise/DerivedData/ChooseCruise/Index.noindex/PrecompiledHeaders",
+      "pchPath" : "/Users/nmcginnis17/Desktop/appDev/Hacking With iOS/Advanced-iOS-1/ChooseCruise/DerivedData/ChooseCruise/Build/Intermediates.noindex/PrecompiledHeaders"
+    },
+    "configurationName" : "Debug",
+    "overrides" : {
+      "synthesized" : {
+        "table" : {
+          "ASSETCATALOG_FILTER_FOR_DEVICE_MODEL" : "iPhone14,3",
+          "ASSETCATALOG_FILTER_FOR_DEVICE_OS_VERSION" : "15.6.1",
+          "ASSETCATALOG_FILTER_FOR_THINNING_DEVICE_CONFIGURATION" : "iPhone14,3",
+          "BUILD_ACTIVE_RESOURCES_ONLY" : "YES",
+          "ENABLE_PREVIEWS" : "NO",
+          "TARGET_DEVICE_IDENTIFIER" : "00008110-001C5D543C13801E",
+          "TARGET_DEVICE_MODEL" : "iPhone14,3",
+          "TARGET_DEVICE_OS_VERSION" : "15.6.1",
+          "TARGET_DEVICE_PLATFORM_NAME" : "iphoneos"
+        }
+      }
+    }
+  },
+  "schemeCommand" : "launch",
+  "showNonLoggedProgress" : true,
+  "useDryRun" : false,
+  "useImplicitDependencies" : true,
+  "useLegacyBuildLocations" : false,
+  "useParallelTargets" : true
+}

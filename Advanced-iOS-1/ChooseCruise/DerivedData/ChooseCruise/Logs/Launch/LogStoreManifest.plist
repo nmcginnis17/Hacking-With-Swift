@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>logFormatVersion</key>
+	<integer>10</integer>
+	<key>logs</key>
+	<dict>
+		<key>8E351DD0-4421-4002-8A81-73E82B8976DE</key>
+		<dict>
+			<key>auxiliaryLogUniqueIdentifier</key>
+			<string>26B5DF5E-77C2-4D9D-8625-C9422878B41B</string>
+			<key>auxiliaryObservable</key>
+			<dict>
+				<key>highLevelStatus</key>
+				<string>E</string>
+			</dict>
+			<key>className</key>
+			<string>IDESchemeActionsInvocationRecord</string>
+			<key>documentTypeString</key>
+			<string>&lt;nil&gt;</string>
+			<key>domainType</key>
+			<string>com.apple.dt.IDE.LaunchSchemeAction</string>
+			<key>fileName</key>
+			<string>Run-Extension-2023.07.03_22-11-54--0400.xcresult</string>
+			<key>hasAuxiliaryLog</key>
+			<true/>
+			<key>hasConsoleLog</key>
+			<true/>
+			<key>hasPrimaryLog</key>
+			<true/>
+			<key>primaryObservable</key>
+			<dict>
+				<key>highLevelStatus</key>
+				<string>E</string>
+			</dict>
+			<key>schemeIdentifier-containerName</key>
+			<string>ChooseCruise project</string>
+			<key>schemeIdentifier-schemeName</key>
+			<string>Extension</string>
+			<key>schemeIdentifier-sharedScheme</key>
+			<integer>1</integer>
+			<key>signature</key>
+			<string>Run Extension</string>
+			<key>timeStartedRecording</key>
+			<real>710129514.78024602</real>
+			<key>timeStoppedRecording</key>
+			<real>0.0</real>
+			<key>title</key>
+			<string>Run Extension</string>
+			<key>uniqueIdentifier</key>
+			<string>8E351DD0-4421-4002-8A81-73E82B8976DE</string>
+		</dict>
+		<key>96CEDAD3-D062-4DFF-B312-3854D1CCFB7A</key>
+		<dict>
+			<key>auxiliaryLogUniqueIdentifier</key>
+			<string>EB22D9E0-F560-45D3-8CD8-34C5DE5ABE31</string>
+			<key>auxiliaryObservable</key>
+			<dict>
+				<key>highLevelStatus</key>
+				<string>E</string>
+			</dict>
+			<key>className</key>
+			<string>IDESchemeActionsInvocationRecord</string>
+			<key>documentTypeString</key>
+			<string>&lt;nil&gt;</string>
+			<key>domainType</key>
+			<string>com.apple.dt.IDE.LaunchSchemeAction</string>
+			<key>fileName</key>
+			<string>Run-Extension-2023.07.03_22-07-00--0400.xcresult</string>
+			<key>hasAuxiliaryLog</key>
+			<true/>
+			<key>hasConsoleLog</key>
+			<true/>
+			<key>hasPrimaryLog</key>
+			<true/>
+			<key>primaryObservable</key>
+			<dict>
+				<key>highLevelStatus</key>
+				<string>E</string>
+			</dict>
+			<key>schemeIdentifier-containerName</key>
+			<string>ChooseCruise project</string>
+			<key>schemeIdentifier-schemeName</key>
+			<string>Extension</string>
+			<key>schemeIdentifier-sharedScheme</key>
+			<integer>1</integer>
+			<key>signature</key>
+			<string>Run Extension</string>
+			<key>timeStartedRecording</key>
+			<real>710129220.00889504</real>
+			<key>timeStoppedRecording</key>
+			<real>0.0</real>
+			<key>title</key>
+			<string>Run Extension</string>
+			<key>uniqueIdentifier</key>
+			<string>96CEDAD3-D062-4DFF-B312-3854D1CCFB7A</string>
+		</dict>
+	</dict>
+</dict>
+</plist>
