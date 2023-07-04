@@ -2,7 +2,9 @@
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="21701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="Hxf-mB-aiX">
     <device id="retina6_12" orientation="portrait" appearance="light"/>
     <dependencies>
+        <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21678"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -51,6 +53,48 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ILa-L4-Rz8" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="744.27480916030527" y="5.6338028169014089"/>
+        </scene>
+        <!--Test View Controller-->
+        <scene sceneID="xQD-4B-shf">
+            <objects>
+                <viewController storyboardIdentifier="Test" id="xbZ-yQ-HJ9" customClass="TestViewController" customModule="Polyglot" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="Rgn-ch-pgl">
+                        <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="40" translatesAutoresizingMaskIntoConstraints="NO" id="EDg-BT-uGB">
+                                <rect key="frame" x="61.333333333333343" y="372.66666666666669" width="270.66666666666663" height="106.66666666666669"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="How do you say this in English" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xCF-Bw-XlC">
+                                        <rect key="frame" x="0.0" y="0.0" width="270.66666666666669" height="20.333333333333332"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="LE CHAMEAU" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wIP-GF-ydQ">
+                                        <rect key="frame" x="0.0" y="60.333333333333314" width="270.66666666666669" height="46.333333333333343"/>
+                                        <fontDescription key="fontDescription" name="AmericanTypewriter" family="American Typewriter" pointSize="40"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                            </stackView>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="LaP-d0-Jh8"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="EDg-BT-uGB" firstAttribute="centerY" secondItem="Rgn-ch-pgl" secondAttribute="centerY" id="37u-MA-G2a"/>
+                            <constraint firstItem="EDg-BT-uGB" firstAttribute="centerX" secondItem="Rgn-ch-pgl" secondAttribute="centerX" id="P7D-z8-txq"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="prompt" destination="wIP-GF-ydQ" id="g7g-cN-hKx"/>
+                        <outlet property="stackView" destination="EDg-BT-uGB" id="HaE-c8-oeC"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Vug-uQ-ixT" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="743" y="720"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="h3R-d6-hjt">

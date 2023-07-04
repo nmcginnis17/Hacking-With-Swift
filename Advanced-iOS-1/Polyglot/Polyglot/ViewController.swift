@@ -22,6 +22,9 @@ class ViewController: UITableViewController {
         
         navigationItem.leftBarButtonItem = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(addNewWord))
         
+        navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .play, target: self, action: #selector(startTest))
+        navigationItem.backBarButtonItem = UIBarButtonItem(title: "End Test", style: .plain, target: nil, action: nil)
+        
         if let savedWords = defaults.object(forKey: "Words") as? [String] {
             words = savedWords
         } else {
@@ -126,6 +129,13 @@ class ViewController: UITableViewController {
         tableView.insertRows(at: [newIndexPath], with: .automatic)
         
         saveWords()
+    }
+    
+    @objc func startTest() {
+        guard let vc = storyboard?.instantiateViewController(withIdentifier: "Test") as? TestViewController else { return }
+        vc.words = words
+        
+        navigationController?.pushViewController(vc, animated: true)
     }
     
 }

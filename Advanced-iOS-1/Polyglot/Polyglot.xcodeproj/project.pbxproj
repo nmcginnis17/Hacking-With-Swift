@@ -13,6 +13,7 @@
 		1FD159912A5475FE004CE2F5 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1FD1598F2A5475FE004CE2F5 /* Main.storyboard */; };
 		1FD159932A5475FF004CE2F5 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1FD159922A5475FF004CE2F5 /* Assets.xcassets */; };
 		1FD159962A5475FF004CE2F5 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1FD159942A5475FF004CE2F5 /* LaunchScreen.storyboard */; };
+		1FD1599E2A548CAC004CE2F5 /* TestViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FD1599D2A548CAC004CE2F5 /* TestViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -24,6 +25,7 @@
 		1FD159922A5475FF004CE2F5 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		1FD159952A5475FF004CE2F5 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		1FD159972A5475FF004CE2F5 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		1FD1599D2A548CAC004CE2F5 /* TestViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -59,6 +61,7 @@
 				1FD159892A5475FE004CE2F5 /* AppDelegate.swift */,
 				1FD1598B2A5475FE004CE2F5 /* SceneDelegate.swift */,
 				1FD1598D2A5475FE004CE2F5 /* ViewController.swift */,
+				1FD1599D2A548CAC004CE2F5 /* TestViewController.swift */,
 				1FD1598F2A5475FE004CE2F5 /* Main.storyboard */,
 				1FD159922A5475FF004CE2F5 /* Assets.xcassets */,
 				1FD159942A5475FF004CE2F5 /* LaunchScreen.storyboard */,
@@ -140,6 +143,7 @@
 			files = (
 				1FD1598E2A5475FE004CE2F5 /* ViewController.swift in Sources */,
 				1FD1598A2A5475FE004CE2F5 /* AppDelegate.swift in Sources */,
+				1FD1599E2A548CAC004CE2F5 /* TestViewController.swift in Sources */,
 				1FD1598C2A5475FE004CE2F5 /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
