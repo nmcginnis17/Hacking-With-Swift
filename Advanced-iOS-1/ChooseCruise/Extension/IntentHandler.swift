@@ -11,6 +11,17 @@ import UIKit
 class IntentHandler: INExtension, INRidesharingDomainHandling {
     func handle(intent: INListRideOptionsIntent, completion: @escaping (INListRideOptionsIntentResponse) -> Void) {
         // list of rides available
+        let result = INListRideOptionsIntentResponse(code: .success, userActivity: nil)
+        
+        let mini = INRideOption(name: "Mini Cooper", estimatedPickupDate: Date(timeIntervalSinceNow: 1000))
+        let honda = INRideOption(name: "Honda Accord", estimatedPickupDate: Date(timeIntervalSinceNow: 800))
+        let ferrari = INRideOption(name: "Ferrari F430", estimatedPickupDate: Date(timeIntervalSinceNow: 300))
+        ferrari.disclaimerMessage = "This is a bad car. You should feel bad."
+        
+        result.expirationDate = Date(timeIntervalSinceNow: 3600)
+        result.rideOptions = [mini, honda, ferrari]
+        
+        completion(result)
     }
     
     func handle(intent: INRequestRideIntent, completion: @escaping (INRequestRideIntentResponse) -> Void) {
