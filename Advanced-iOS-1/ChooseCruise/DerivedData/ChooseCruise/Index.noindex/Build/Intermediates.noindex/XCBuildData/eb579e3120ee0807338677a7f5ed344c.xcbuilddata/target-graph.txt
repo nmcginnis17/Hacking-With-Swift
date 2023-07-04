@@ -1,3 +1,0 @@
-Target dependency graph (2 targets)
-Extensio in ChooseCruise, no dependencies
-Extensio in ChooseCruise, no dependencies
