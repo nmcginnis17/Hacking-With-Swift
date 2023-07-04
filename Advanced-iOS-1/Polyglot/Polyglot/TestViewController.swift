@@ -23,6 +23,9 @@ class TestViewController: UIViewController {
         
         words.shuffle()
         title = "Test"
+        
+        stackView.transform = CGAffineTransform(scaleX: 0.8, y: 0.8)
+        stackView.alpha = 0
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -42,6 +45,13 @@ class TestViewController: UIViewController {
         
         // pull French word at the current question position
         prompt.text = words[questionCounter].components(separatedBy: "::")[1]
+        
+        let animation = UIViewPropertyAnimator(duration: 0.5, dampingRatio: 0.5) {
+            self.stackView.alpha = 1
+            self.stackView.transform = CGAffineTransform.identity
+        }
+        
+        animation.startAnimation()
     }
 
     @objc func nextTapped() {
@@ -59,11 +69,17 @@ class TestViewController: UIViewController {
     }
     
     func prepareForNextQuestion() {
-        // reset prompt to black
-        prompt.textColor = UIColor.black
+        let animation = UIViewPropertyAnimator(duration: 0.5, curve: .easeInOut) { [unowned self] in
+            self.stackView.transform = CGAffineTransform(scaleX: 0.8, y: 0.8)
+            self.stackView.alpha = 0
+        }
         
-        // proceed with next question
-        askQuestion()
+        animation.addCompletion { [unowned self] position in
+            self.prompt.textColor = UIColor.black
+            self.askQuestion()
+        }
+        
+        animation.startAnimation()
     }
     
 }
