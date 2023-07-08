@@ -13,6 +13,11 @@
 		1FD159B32A58FBA2004CE2F5 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1FD159B12A58FBA2004CE2F5 /* Main.storyboard */; };
 		1FD159B52A58FBA3004CE2F5 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1FD159B42A58FBA3004CE2F5 /* Assets.xcassets */; };
 		1FD159B82A58FBA3004CE2F5 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1FD159B62A58FBA3004CE2F5 /* LaunchScreen.storyboard */; };
+		1FD159C02A58FEA3004CE2F5 /* Group.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FD159BF2A58FEA3004CE2F5 /* Group.swift */; };
+		1FD159C22A58FEBB004CE2F5 /* Alarm.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FD159C12A58FEBB004CE2F5 /* Alarm.swift */; };
+		1FD159C52A590307004CE2F5 /* GroupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FD159C42A590307004CE2F5 /* GroupViewController.swift */; };
+		1FD159C72A5904D6004CE2F5 /* Helper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FD159C62A5904D6004CE2F5 /* Helper.swift */; };
+		1FD159C92A5907A3004CE2F5 /* AlarmViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FD159C82A5907A3004CE2F5 /* AlarmViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -24,6 +29,11 @@
 		1FD159B42A58FBA3004CE2F5 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		1FD159B72A58FBA3004CE2F5 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		1FD159B92A58FBA3004CE2F5 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		1FD159BF2A58FEA3004CE2F5 /* Group.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Group.swift; sourceTree = "<group>"; };
+		1FD159C12A58FEBB004CE2F5 /* Alarm.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Alarm.swift; sourceTree = "<group>"; };
+		1FD159C42A590307004CE2F5 /* GroupViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupViewController.swift; sourceTree = "<group>"; };
+		1FD159C62A5904D6004CE2F5 /* Helper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Helper.swift; sourceTree = "<group>"; };
+		1FD159C82A5907A3004CE2F5 /* AlarmViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlarmViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -59,12 +69,25 @@
 				1FD159AB2A58FBA2004CE2F5 /* AppDelegate.swift */,
 				1FD159AD2A58FBA2004CE2F5 /* SceneDelegate.swift */,
 				1FD159AF2A58FBA2004CE2F5 /* ViewController.swift */,
+				1FD159C42A590307004CE2F5 /* GroupViewController.swift */,
+				1FD159C82A5907A3004CE2F5 /* AlarmViewController.swift */,
 				1FD159B12A58FBA2004CE2F5 /* Main.storyboard */,
+				1FD159C62A5904D6004CE2F5 /* Helper.swift */,
+				1FD159C32A58FFD8004CE2F5 /* Model */,
 				1FD159B42A58FBA3004CE2F5 /* Assets.xcassets */,
 				1FD159B62A58FBA3004CE2F5 /* LaunchScreen.storyboard */,
 				1FD159B92A58FBA3004CE2F5 /* Info.plist */,
 			);
 			path = Alarmadillo;
+			sourceTree = "<group>";
+		};
+		1FD159C32A58FFD8004CE2F5 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				1FD159C12A58FEBB004CE2F5 /* Alarm.swift */,
+				1FD159BF2A58FEA3004CE2F5 /* Group.swift */,
+			);
+			path = Model;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -138,9 +161,14 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1FD159C92A5907A3004CE2F5 /* AlarmViewController.swift in Sources */,
+				1FD159C52A590307004CE2F5 /* GroupViewController.swift in Sources */,
+				1FD159C72A5904D6004CE2F5 /* Helper.swift in Sources */,
 				1FD159B02A58FBA2004CE2F5 /* ViewController.swift in Sources */,
 				1FD159AC2A58FBA2004CE2F5 /* AppDelegate.swift in Sources */,
+				1FD159C22A58FEBB004CE2F5 /* Alarm.swift in Sources */,
 				1FD159AE2A58FBA2004CE2F5 /* SceneDelegate.swift in Sources */,
+				1FD159C02A58FEA3004CE2F5 /* Group.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
