@@ -98,6 +98,9 @@ class ViewController: UITableViewController {
             try data.write(to: path)
         } catch {
             // SHOW FAIL ALERT
+            let ac = UIAlertController(title: "Error", message: "Failed to save", preferredStyle: .alert)
+            ac.addAction(UIAlertAction(title: "Ok", style: .default))
+            present(ac, animated: true)
             print("Failed to save")
         }
     }
@@ -109,6 +112,9 @@ class ViewController: UITableViewController {
             groups = try NSKeyedUnarchiver.unarchiveTopLevelObjectWithData(data) as? [Group] ?? [Group]()
         } catch {
             // SHOW FAIL ALERT
+            let ac = UIAlertController(title: "Error", message: "Failed to load", preferredStyle: .alert)
+            ac.addAction(UIAlertAction(title: "Ok", style: .default))
+            present(ac, animated: true)
             print("Failed to load")
         }
         
