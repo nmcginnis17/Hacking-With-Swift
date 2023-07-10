@@ -11,10 +11,30 @@ import UserNotifications
 @main
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
+    var window: UIWindow?
 
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
+        let center = UNUserNotificationCenter.current()
+        
+        if let navController = window?.rootViewController as? UINavigationController {
+            if let viewController = navController.viewControllers[0] as? ViewController {
+                center.delegate = viewController
+            }
+        }
+        
+        // create the three actions we want for uor alert
+        let show = UNNotificationAction(identifier: "show", title: "Show Group", options: .foreground)
+        let destroy = UNNotificationAction(identifier: "destroy", title: "Destroy Group", options: [.destructive, .authenticationRequired])
+        let rename = UNTextInputNotificationAction(identifier: "rename", title: "Rename Group", options: [], textInputButtonTitle: "Rename", textInputPlaceholder: "Type the new name here")
+        
+        // wrap actions inside a category
+        let category = UNNotificationCategory(identifier: "alarm", actions: [show, rename, destroy], intentIdentifiers: [], options: [.customDismissAction])
+        
+        // register category with system
+        center.setNotificationCategories([category])
+        
         return true
     }
 

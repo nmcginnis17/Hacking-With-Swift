@@ -8,7 +8,7 @@
 import UIKit
 import UserNotifications
 
-class ViewController: UITableViewController {
+class ViewController: UITableViewController, UNUserNotificationCenterDelegate {
     
     var groups = [Group]()
 
@@ -227,6 +227,88 @@ class ViewController: UITableViewController {
             print("Failed to attach alarm image: \(error)")
             return []
         }
+    }
+    
+    func userNotificationCenter(_ center: UNUserNotificationCenter, willPresent notification: UNNotification, withCompletionHandler completionHandler: @escaping (UNNotificationPresentationOptions) -> Void) {
+        completionHandler([.alert])
+        // if want sound to play while in app use below instead
+//        completionHandler([.alert, .sound])
+    }
+    
+    func userNotificationCenter(_ center: UNUserNotificationCenter, didReceive response: UNNotificationResponse, withCompletionHandler completionHandler: @escaping () -> Void) {
+        // pull out buried userInfo dictionary
+        let userInfo = response.notification.request.content.userInfo
+        
+        if let groupID = userInfo["group"] as? String {
+            switch response.actionIdentifier {
+                // user swiped to unlock; do nothing
+            case UNNotificationDefaultActionIdentifier:
+                print("Default identifier")
+                
+                // user dismissed alert; do nothing
+            case UNNotificationDefaultActionIdentifier:
+                print("Default identifier")
+                
+                // user asked to see group; call display()
+            case "show":
+                display(group: groupID)
+                break
+                
+                // user asked to destroy group; call destroy()
+            case "destroy":
+                destroy(group: groupID)
+                break
+                
+                // user asked to rename group; unwrap text response, & call rename()
+            case "rename":
+                if let textResponse = response as? UNTextInputNotificationResponse {
+                    rename(group: groupID, newName: textResponse.userText)
+                }
+                break
+                
+            default:
+                break
+            }
+        }
+        
+        // call completion handler when done
+        completionHandler()
+     }
+    
+    func display(group groupID: String) {
+        _ = navigationController?.popToRootViewController(animated: false)
+        for group in groups {
+            if group.id == groupID {
+                performSegue(withIdentifier: "EditGroup", sender: group)
+                return
+            }
+        }
+    }
+    
+    func destroy(group groupID: String) {
+        _ = navigationController?.popToRootViewController(animated: false)
+        for (index, group) in groups.enumerated() {
+            if group.id == groupID {
+                groups.remove(at: index)
+                break
+            }
+        }
+        
+        save()
+        load()
+    }
+    
+    func rename(group groupID: String, newName: String) {
+        _ = navigationController?.popToRootViewController(animated: false)
+        for group in groups {
+            if group.id == groupID {
+                group.name = newName
+                break
+            }
+        }
+        
+        save()
+        load()
     }
 
 }
