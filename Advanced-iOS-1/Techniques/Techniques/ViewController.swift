@@ -22,15 +22,17 @@ class ViewController: UIViewController {
         slider.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: 10).isActive = true
         slider.widthAnchor.constraint(equalTo: view.widthAnchor).isActive = true
         
+        let recognizer = UITapGestureRecognizer(target: self, action: #selector(boxTapped))
         let redBox = UIView(frame: CGRect(x: -64, y: 0, width: 128, height: 128))
         redBox.translatesAutoresizingMaskIntoConstraints = false
         redBox.backgroundColor = UIColor.red
         redBox.center.y = view.center.y
+        redBox.addGestureRecognizer(recognizer)
         view.addSubview(redBox)
         
-        animator = UIViewPropertyAnimator(duration: 2, curve: .easeInOut) { [unowned self, redBox] in
+        animator = UIViewPropertyAnimator(duration: 20, dampingRatio: 0.5) { [unowned self, redBox] in
             redBox.center.x = self.view.frame.width
-            redBox.transform = CGAffineTransform(rotationAngle: CGFloat.pi).scaledBy(x: 0.001, y: 0.001)
+            redBox.transform = CGAffineTransform(rotationAngle: CGFloat.pi)
         }
         
         let play = UIBarButtonItem(barButtonSystemItem: .play, target: self, action: #selector(playTapped))
@@ -40,6 +42,10 @@ class ViewController: UIViewController {
         navigationItem.rightBarButtonItems = [play, flip]
     }
     
+    @objc func boxTapped() {
+        print("BOX TAPPED!")
+    }
+    
     @objc func sliderChanged(_ sender: UISlider) {
         animator.fractionComplete = CGFloat(sender.value)
     }
@@ -47,14 +53,9 @@ class ViewController: UIViewController {
     @objc func playTapped(_ sender: UIButton){
         // if the animation has started
         if animator.state == .active {
-            // if its current in motion
-            if animator.isRunning {
-                // pause
-                animator.pauseAnimation()
-            } else {
-                // continue at the same speed
-                animator.continueAnimation(withTimingParameters: nil, durationFactor: 1)
-            }
+            // stop animation
+            animator.stopAnimation(false)
+            animator.finishAnimation(at: .end)
         } else {
             // not started yet; start it now
             animator.startAnimation()
